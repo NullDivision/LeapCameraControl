@@ -33,6 +33,7 @@
     </style>
     <script type="text/javascript">
 var socket;
+var stream;
 
 function init() {
   var host = "ws://10.0.0.35:9000/echobot"; // SET THIS TO YOUR SERVER
@@ -43,7 +44,9 @@ function init() {
                    console.log("Welcome - status "+this.readyState); 
                  };
       socket.onmessage = function(msg) { 
-                   console.log("Received: "+msg.data); 
+        console.log(msg);
+                  // $('#stream').attr('src', msg);
+                  //  console.log("Received: "+msg.data); 
                  };
       socket.onclose   = function(msg) { 
                    console.log("Disconnected - status "+this.readyState); 
@@ -53,6 +56,27 @@ function init() {
       console.log(ex); 
     }
   }
+
+  // function initStream() {
+  // var host = "ws://10.0.0.35:9001/echobot"; // SET THIS TO YOUR SERVER
+  // try {
+  //     stream = new WebSocket(host);
+  //     log('WebSocket - status '+stream.readyState);
+  //     stream.onopen    = function(msg) { 
+  //                  console.log("Welcome - status "+this.readyState); 
+  //                };
+  //     stream.onmessage = function(msg) { 
+  //                 $('#stream').attr('src', msg);
+  //                  console.log("Received: "+msg.data); 
+  //                };
+  //     stream.onclose   = function(msg) { 
+  //                  console.log("Disconnected - status "+this.readyState); 
+  //                };
+  //   }
+  //   catch(ex){ 
+  //     console.log(ex); 
+  //   }
+  // }
 
   function send(){
     var txt,msg;
@@ -85,6 +109,7 @@ function init() {
     </script>
   </head>
   <body  onload="init()">
+  <img src="" id="stream"/>
 <input type="text" id="msg" name="msg"/>
 <button onclick="send()">Send</button>
   </body>
