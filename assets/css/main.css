@@ -11,7 +11,7 @@ body, html { background-color: #191919; height: 100%; }
 .row, .row > section { height: 100%; }
 
 #page { background-color: #191919; height: 100%; width: 100%; }
-#camera-feeds .feed-container { margin: 10px; zoom: 0.14; }
+#camera-feeds .feed-container { margin: 10px; zoom: 10%; }
 #main-camera .feed-container {
     zoom: 0.45;
     position: relative;
