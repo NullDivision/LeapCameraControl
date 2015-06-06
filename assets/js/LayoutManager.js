@@ -30,7 +30,7 @@
             }
 
             if (this.draggable) {
-                this.draggable.addClass('dragging');
+                this.draggable.addClass('dragging').appendTo('#page');
                 this.drag = true;
 
                 $('.circle').hide();
