@@ -27,10 +27,12 @@
 
             if (this.draggable) {
                 this.draggable.addClass('dragging');
+                this.drag = true;
+
+                $('.circle').hide();
+                $('.hand').removeClass('hidden');
             }
 
-            $('.circle').hide();
-            $('.hand').removeClass('hidden');
             this.move(posX, posY);
 
             return true;
