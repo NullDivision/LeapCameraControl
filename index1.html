@@ -39,13 +39,13 @@ function init() {
   var host = "ws://10.0.0.35:9000/echobot"; // SET THIS TO YOUR SERVER
   try {
       socket = new WebSocket(host);
-      log('WebSocket - status '+socket.readyState);
+      console.log('WebSocket - status '+socket.readyState);
       socket.onopen    = function(msg) { 
                    console.log("Welcome - status "+this.readyState); 
                  };
       socket.onmessage = function(msg) { 
         console.log(msg);
-                  // $('#stream').attr('src', msg);
+                  $('#stream').attr('src', 'data:image/jpg;base64,'+msg.data);
                   //  console.log("Received: "+msg.data); 
                  };
       socket.onclose   = function(msg) { 
@@ -56,7 +56,9 @@ function init() {
       console.log(ex); 
     }
   }
-
+$( document ).ready(function() {
+  init();
+});
   // function initStream() {
   // var host = "ws://10.0.0.35:9001/echobot"; // SET THIS TO YOUR SERVER
   // try {
@@ -108,7 +110,7 @@ function init() {
 
     </script>
   </head>
-  <body  onload="init()">
+  <body>
   <img src="" id="stream"/>
 <input type="text" id="msg" name="msg"/>
 <button onclick="send()">Send</button>
