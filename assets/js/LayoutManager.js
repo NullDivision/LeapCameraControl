@@ -27,10 +27,13 @@
 
             for (i = interactables.length - 1; i >= 0; i -= 1) {
                 this.draggable = $(elements).filter(interactables[i]);
+                if (this.draggable) {
+                    break;
+                }
             }
 
             if (this.draggable) {
-                this.draggable.addClass('dragging');
+                this.draggable.addClass('dragging').appendTo('#page');
                 this.drag = true;
 
                 $('.circle').hide();
@@ -42,11 +45,19 @@
             return true;
         };
 
-        layoutManager.release = function () {
+        layoutManager.release = function (posX, posY) {
+            var container = $(window.document.elementsFromPoint(posX, posY)).filter('.feed-column');
+
             $('.hand').addClass('hidden');
             $('.circle').show();
 
             if (this.draggable) {
+                if ('main-camera' === container.attr('id')) {
+                    this.draggable.appendTo(container);
+                } else {
+                    this.draggable.prependTo('#camera-feeds');
+                }
+
                 this.draggable.removeClass('dragging');
             }
 

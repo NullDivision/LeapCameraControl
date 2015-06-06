@@ -4,28 +4,36 @@ body, html { background-color: #191919; height: 100%; overflow: hidden; }
     background-color: #646464;
     border: 1px solid #352C2C;
     box-shadow: 0 0 5px #000;
-    width: 1920px;
-    height: 1080px;
+    width: 190px;
+    height: 100px;
     display: inline-block;
 }
-.dragging { position: absolute; transform: translate(-50%, 50%); }
+.feed-container img {
+    max-width: 100%;
+    max-height: 100%;
+    margin: 0 auto;
+    position: relative;
+    display: block;
+}
+.dragging { position: absolute; transform: translate(-50%, 0%); }
 .row, .row > section { height: 100%; }
 
 #page { background-color: #191919; height: 100%; width: 100%; }
 #camera-feeds .feed-container {
     margin: 10px;
-    zoom: 10%;
     -moz-transform: scale(.1);
     -moz-transform-origin: 0% 0%;
 }
 #main-camera .feed-container {
-    zoom: 45%;
     position: relative;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    -moz-transform: translate(-50%, -50%) scale(.45);
+    -moz-transform: translate(-50%, -50%);
     margin: 0 auto;
+    width: 80%;
+    min-height: 60%;
+    max-height: 80%;
 }
 
 .finger1 {
