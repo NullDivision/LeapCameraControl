@@ -28,6 +28,9 @@ function computeZ(axisZ) {
 var marginTop = 0;
 Leap.loop(options, function (frame) {
     var leap = this;
+    if(frame.hands.length == 0){
+        LayoutManager.release(x, y, false);
+    }
     for (var i = 0, len = frame.hands.length; i < len; i++) {
         hand = frame.hands[i];
         var normalized = frame.interactionBox.normalizePoint(hand.palmPosition);
@@ -43,7 +46,7 @@ Leap.loop(options, function (frame) {
                 LayoutManager.grab(x, y);
                 $(".open-hand").hide();
             } else {
-                LayoutManager.release(x, y);
+                LayoutManager.release(x, y, true);
                 $('.open-hand').show();
             }
         }

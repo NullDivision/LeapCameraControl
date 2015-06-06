@@ -45,12 +45,15 @@
             return true;
         };
 
-        layoutManager.release = function (posX, posY) {
+        layoutManager.release = function (posX, posY, framePresence) {
             var mainOccupant = $('#main-camera .feed-container'),
                 container    = $(window.document.elementsFromPoint(posX, posY)).filter('.feed-column');
 
             $('.hand').addClass('hidden');
-            $('.open-hand').show();
+            if(framePresence)
+                $('.open-hand').show();
+            else
+                $('.open-hand').hide();
 
             if (this.draggable) {
                 if ('main-camera' === container.attr('id')) {
