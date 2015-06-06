@@ -1,0 +1,22 @@
+body, html { background-color: #191919; height: 100%; }
+
+.feed-container {
+    background-color: #646464;
+    border: 1px solid #352C2C;
+    box-shadow: 0 0 5px #000;
+    width: 1920px;
+    height: 1080px;
+    display: inline-block;
+}
+.row, .row > section { height: 100%; }
+
+#page { background-color: #191919; height: 100%; width: 100%; }
+#camera-feeds .feed-container { margin: 10px; zoom: 0.14; }
+#main-camera .feed-container {
+    zoom: 0.45;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0 auto;
+}
