@@ -1,9 +1,5 @@
 var options = {enableGestures: true};
 
-LayoutManager.grabbed = LayoutManager.drag;
-LayoutManager.pull = function(z){
-    console.log("pulled:");
-};
 LayoutManager.swipe = function (x,y){
     console.log("swiped");
 };
@@ -32,7 +28,6 @@ function reloadImage() {
 setInterval(reloadImage, 20);
 
 var marginTop = 0;
-var grabbed = false;
 Leap.loop(options, function (frame) {
     var leap = this;
 
