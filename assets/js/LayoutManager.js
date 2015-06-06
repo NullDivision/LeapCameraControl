@@ -27,10 +27,12 @@
 
             if (this.draggable) {
                 this.draggable.addClass('dragging');
+                this.drag = true;
+
+                $('.circle').hide();
+                $('.hand').removeClass('hidden');
             }
 
-            $('.circle').hide();
-            $('.hand').removeClass('hidden');
             this.move(posX, posY);
 
             return true;
@@ -39,6 +41,7 @@
         layoutManager.release = function () {
             $('.hand').addClass('hidden');
             $('.circle').show();
+            if(this.draggable)
             this.draggable.removeClass('dragging');
 
             this.drag = false;

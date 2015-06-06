@@ -1,8 +1,8 @@
 var options = {enableGestures: true};
 
 LayoutManager.grabbed = LayoutManager.drag;
-LayoutManager.pull = function(x, y, z){
-    console.log("pulled:"+x+","+y+","+z);
+LayoutManager.pull = function(z){
+    console.log("pulled:");
 };
 LayoutManager.swipe = function (x,y){
     console.log("swiped");
@@ -31,12 +31,10 @@ function reloadImage() {
 }
 setInterval(reloadImage, 20);
 
-var marginTop = 399;
+var marginTop = 0;
 var grabbed = false;
 Leap.loop(options, function (frame) {
     var leap = this;
-
-
 
     if (frame.pointables.length > 0) {
         var i = 1;
@@ -51,7 +49,6 @@ Leap.loop(options, function (frame) {
             });
             i++;
         });
-
     }
 
     for (var i = 0, len = frame.hands.length; i < len; i++) {
@@ -60,19 +57,17 @@ Leap.loop(options, function (frame) {
         var x = window.innerWidth * normalized[0];
         var y = window.innerHeight * (1 - normalized[1])+marginTop;
         var z = normalized[2];
+
         if(hand.confidence > 0.2){
-          if (hand.grabStrength >= 0.6) {
-            LayoutManager.grab(x, y);
-          } else {
-            if(LayoutManager.grabbed) {
-              LayoutManager.release(x, y);
+            if (hand.grabStrength >= 0.6) {
+                LayoutManager.grab(x, y);
+            } else {
+                LayoutManager.release(x, y);
             }
-          }
         }
+        LayoutManager.move(x, y);
         if (z >= 1) {
-            if(LayoutManager.grabbed){
-                LayoutManager.pull(x, y, z);
-            }
+            LayoutManager.pull(z);
         }
     }
     frame.gestures.forEach(function(gesture){
