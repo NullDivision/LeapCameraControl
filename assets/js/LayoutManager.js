@@ -4,7 +4,7 @@
     scope.LayoutManager = (function () {
         var layoutManager = {
             drag: false,
-            draggable: null
+            draggable: null,
         };
         var t;
 
@@ -94,23 +94,22 @@
             return true;
         };
 
-        layoutManager.zoom = function(posX, posY, strength, socket) {
-            var element = window.document.elementsFromPoint(posX, posY);
-            console.log(strength);
-            if ($(element).hasClass('feed-img')) {
-                if (strength < 0.5 && strength >= 0.1) {
-                    // if(t != null) { clearTimeout(t);}
-                    // t = setTimeout(function(){
-                        send('{"cmd":1, "usr":'+$(element).attr('usr')+"}");//}
-                    // , 500);
-                } else if(strength >= 0.5){
-                    // if(t != null) { clearTimeout(t);}
-                    // t = setTimeout(function(){
-                        send('{"cmd":2, "usr":'+$(element).attr('usr')+"}");//}
-                    // , 500);
-                }
-                
-            }
+        layoutManager.zoomIn = function(socket) {
+            console.log("blin");
+            var element = $('#main-camera .feed-img');
+            // if(t != null) { clearTimeout(t);}
+            // t = setTimeout(function(){
+                send('{"cmd":1, "usr":'+$(element).attr('usr')+"}");//}
+            // , 500);
+        };
+
+        layoutManager.zoomOut = function(socket) {
+            console.log("out");
+            var element = $('#main-camera .feed-img');
+            // if(t != null) { clearTimeout(t);}
+            // t = setTimeout(function(){
+                send('{"cmd":2, "usr":'+$(element).attr('usr')+"}");//}
+            // , 500);
         };
         return layoutManager;
     }());
