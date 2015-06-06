@@ -30,6 +30,15 @@
             return true;
         };
 
+        layoutManager.release = function () {
+            $('.hand').addClass('hidden');
+            $('.circle').show();
+
+            this.drag = false;
+
+            return true;
+        };
+
         return layoutManager;
     }());
 }(window, jQuery));

@@ -1,12 +1,6 @@
 var options = {enableGestures: true};
 
 LayoutManager.grabbed = LayoutManager.drag;
-LayoutManager.release = function(x,y){
-    console.log('release');
-    $('.hand').hide();
-    $('.circle').show();
-    this.grabbed = false;
-};
 LayoutManager.pull = function(x, y, z){
     console.log("pulled:"+x+","+y+","+z);
 };
