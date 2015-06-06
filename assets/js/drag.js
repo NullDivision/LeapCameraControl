@@ -24,6 +24,8 @@ function computeZ(axisZ) {
 }
 var eventsHistory = [];
 var marginTop = 0;
+var rightHand;
+var leftHand;
 Leap.loop(options, function (frame) {
     var leap = this;
     if(frame.hands.length == 0){
@@ -79,13 +81,11 @@ Leap.loop(options, function (frame) {
                 $('.open-hand').show();
             }
         }
-        if(hand.pinchStrength > 0) {
-         // LayoutManager.zoom(x, y, hand.pinchStrength, socket);
-        }
         LayoutManager.move(x, y);
         LayoutManager.pull(computeZ(z));
     }
     frame.gestures.forEach(function(gesture){
+
         switch (gesture.type){
           case "keyTap":
               LayoutManager.keyTap(x, y);
@@ -93,7 +93,14 @@ Leap.loop(options, function (frame) {
           case "screenTap":
               LayoutManager.tap(x, y);
           case "swipe":
-              LayoutManager.swipe(x, y);
+              var isHorizontal = Math.abs(gesture.direction[0]) > Math.abs(gesture.direction[1]);
+              if(!isHorizontal) {
+                if(gesture.direction[1] > 0){
+                    LayoutManager.zoomIn(x, y, socket);
+                } else {
+                    LayoutManager.zoomOut(x, y, socket);
+                }  
+              }
               break;
         }
     });
