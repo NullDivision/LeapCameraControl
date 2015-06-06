@@ -8,7 +8,7 @@ body, html { background-color: #191919; height: 100%; overflow: hidden; }
     height: 1080px;
     display: inline-block;
 }
-.dragging { position: absolute; }
+.dragging { position: absolute; transform: translate(-50%, 50%); }
 .row, .row > section { height: 100%; }
 
 #page { background-color: #191919; height: 100%; width: 100%; }
@@ -61,3 +61,4 @@ body, html { background-color: #191919; height: 100%; overflow: hidden; }
     width:100%;
     height: 100%;
 }
+.hand { position: absolute; }

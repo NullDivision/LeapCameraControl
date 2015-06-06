@@ -1,6 +1,21 @@
 var options = {enableGestures: true};
 
-
+LayoutManager.grabbed = LayoutManager.drag;
+LayoutManager.pull = function(z){
+    console.log("pulled:"+x+","+y+","+z);
+};
+LayoutManager.swipe = function (x,y){
+    console.log("swiped");
+};
+LayoutManager.tap = function (x,y){
+    console.log("tapped");
+};
+LayoutManager.keyTap = function (x,y){
+    console.log("keytap");
+};
+LayoutManager.circle = function (x,y){
+    console.log("circle");
+};
 
 function reloadImage() {
     if (!$("#image")[0].complete){
@@ -12,45 +27,17 @@ function reloadImage() {
     } catch( e){
         console.log(e);
     }
-    
+
 }
-//setInterval(reloadImage, 20);
- var LayoutManager = {
-  grabbed: false,
-  release:function(x,y){
-    console.log('release');
-    $('.hand').hide();
-    $('.circle').show();
-    this.grabbed = false;
-  },
-  grab:function(x,y){
-    console.log('grabbed');
-    $('.hand').show().css({top:y+'px',left:x+'px',position:'absolute'});
-    $('.circle').hide();
-    this.grabbed = true;
-  },
-  pull: function(x, y, z){
-    console.log("pulled:"+x+","+y+","+z);
-  },
-  swipe: function (x,y){
-    console.log("swiped");
-  },
-  tap: function (x,y){
-    console.log("tapped");
-  },
-  keyTap: function (x,y){
-    console.log("keytap");
-  },
-  circle: function (x,y){
-    console.log("circle");
-  }
-};
-var marginTop = 399;
+setInterval(reloadImage, 20);
+
+var marginTop = 0;
+var grabbed = false;
 Leap.loop(options, function (frame) {
     var leap = this;
-    
-    
-    
+
+
+
     if (frame.pointables.length > 0) {
         var i = 1;
         frame.pointables.forEach(function (pointable) {
@@ -77,15 +64,11 @@ Leap.loop(options, function (frame) {
           if (hand.grabStrength >= 0.6) {
             LayoutManager.grab(x, y);
           } else {
-            if(LayoutManager.grabbed) {
-              LayoutManager.release(x, y);
-            }
+            LayoutManager.release(x, y);
           }
         }
         if (z >= 1) {
-            if(LayoutManager.grabbed){
-                LayoutManager.pull(x, y, z);
-            }      
+            LayoutManager.pull(z);
         }
     }
     frame.gestures.forEach(function(gesture){
@@ -104,4 +87,3 @@ Leap.loop(options, function (frame) {
         }
     });
 }).use('screenPosition', {scale: 0.5});
-
