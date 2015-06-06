@@ -7,7 +7,7 @@ LayoutManager = {
     console.log('grabbed');
   }
 };
-
+var grabbed = false;
 Leap.loop(options, function (frame) {
     if (frame.pointables.length > 0) {
         var i = 1;
