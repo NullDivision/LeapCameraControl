@@ -17,48 +17,33 @@ LayoutManager.circle = function (x,y){
     console.log("circle");
 };
 
-function reloadImage() {
-    if (!$("#image")[0].complete){
-        return;
-    }
-    var url = "http://10.0.0.21:8080/img.jpg?" + Math.floor(Date.now() / 1000);
-    try{
-        $("#image").attr('src', url);
-    } catch( e){
-        console.log(e);
-    }
+function computeZ(axisZ) {
+    if(axisZ > 0)
+        axisZ = axisZ/3;
 
+    if(axisZ > 1) {
+        axisZ = 1;
+    } else if(axisZ < -1) {
+        axisZ = -1;
+    }
+    return axisZ;
 }
-setInterval(reloadImage, 20);
 
 var marginTop = 0;
 var grabbed = false;
 Leap.loop(options, function (frame) {
     var leap = this;
-
-    if (frame.pointables.length > 0) {
-        var i = 1;
-        frame.pointables.forEach(function (pointable) {
-            var position = pointable.stabilizedTipPosition;
-            var normalized = frame.interactionBox.normalizePoint(position);
-            var x = window.innerWidth * normalized[0];
-            var y = window.innerHeight * (1 - normalized[1])+marginTop;
-            $('.finger' + i).css({
-                left: x,
-                top: y
-            });
-            i++;
-        });
-    }
-
     for (var i = 0, len = frame.hands.length; i < len; i++) {
         hand = frame.hands[i];
         var normalized = frame.interactionBox.normalizePoint(hand.palmPosition);
         var x = window.innerWidth * normalized[0];
         var y = window.innerHeight * (1 - normalized[1])+marginTop;
         var z = normalized[2];
-
-        if(hand.confidence > 0.5){
+        $('.finger1').css({
+            left: x,
+            top: y
+        });
+        if(hand.confidence > 0.3){
             if (hand.grabStrength >= 0.7) {
                 LayoutManager.grab(x, y);
             } else {
@@ -68,8 +53,8 @@ Leap.loop(options, function (frame) {
         LayoutManager.move(x, y);
         if (z >= 1) {
             LayoutManager.pull(z);
-        }
-    }
+        }    
+	}
     frame.gestures.forEach(function(gesture){
         switch (gesture.type){
           case "circle":
