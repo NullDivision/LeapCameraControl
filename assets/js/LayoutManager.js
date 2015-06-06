@@ -36,7 +36,7 @@
                 this.draggable.addClass('dragging').appendTo('#page');
                 this.drag = true;
 
-                $('.circle').hide();
+                $('.open-hand').hide();
                 $('.hand').removeClass('hidden');
             }
 
@@ -49,7 +49,7 @@
             var container = $(window.document.elementsFromPoint(posX, posY)).filter('.feed-column');
 
             $('.hand').addClass('hidden');
-            $('.circle').show();
+            $('.open-hand').show();
 
             if (this.draggable) {
                 if ('main-camera' === container.attr('id')) {
@@ -70,7 +70,7 @@
         layoutManager.pull = function (posZ) {
             var scale       = 1,
                 scaleLimit  = 4.1,
-                adjustment  = parseFloat(0.4),
+                adjustment  = parseFloat(0.1),
                 posZReal    = posZ + 1,
                 posZPercent = posZReal * 100 / 2;
 

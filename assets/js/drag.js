@@ -34,15 +34,17 @@ Leap.loop(options, function (frame) {
         var x = window.innerWidth * normalized[0];
         var y = window.innerHeight * (1 - normalized[1])+marginTop;
         var z = normalized[2];
-        $('.finger1').css({
+        $('.open-hand').css({
             left: x,
             top: y
         });
-        if(hand.confidence > 0.3){
+        if(hand.confidence > 0.4){
             if (hand.grabStrength >= 0.7) {
                 LayoutManager.grab(x, y);
+                $(".open-hand").hide();
             } else {
                 LayoutManager.release(x, y);
+                $('.open-hand').show();
             }
         }
         LayoutManager.move(x, y);
