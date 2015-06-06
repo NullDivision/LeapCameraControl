@@ -1,0 +1,6 @@
+body, html { background-color: #191919; height: 100%; }
+
+.feed-container { background-color: #646464; }
+.row, .row > section { height: 100%; }
+
+#page { background-color: #191919; height: 100%; width: 100%; }
