@@ -32,18 +32,23 @@ LayoutManager = {
     console.log("circle");
   }
 };
-var x = 0;
-function reloadImage(){
-    if(!$("#image")[0].complete)
+
+function reloadImage() {
+    if (!$("#image")[0].complete){
         return;
-    x++;
-    var url = "http://10.0.0.21:8080/img.jpg?"+x;
-    $("#image").attr('src',url);
-    console.log('reload');
+    }
+    var url = "http://10.0.0.21:8080/img.jpg?" + Math.floor(Date.now() / 1000);
+    try{
+        $("#image").attr('src', url);
+    } catch( e){
+        console.log(e);
+    }
+    
 }
-//setInterval(reloadImage, 40);
+setInterval(reloadImage, 20);
  
 var marginTop = 399;
+var grabbed = false;
 Leap.loop(options, function (frame) {
     var leap = this;
     

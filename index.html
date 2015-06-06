@@ -12,12 +12,12 @@
     </head>
     <body style="overflow: hidden">
 
-
+        
         <div class="container" id="page">
             <div class="row">
                 <section id="main-camera" class="col-md-8" rel="main">
                     <div class="feed-container">
-                        <img width="640" id="image" src="http://10.0.0.21:8080/img.jpg"/>
+                        <img width="640" id="image" onload="" src="http://10.0.0.21:8080/img.jpg"/>
                     </div>
                 </section>
                 <section id="camera-feeds" class="col-md-4" rel="cameras">
@@ -30,7 +30,7 @@
                 </section>
             </div>
         </div>
-        
+
         <ul class="fingers"  style="">
             <li class="circle finger1"><img width="50" src="http://static1.squarespace.com/static/54537226e4b0bcd610a53128/546a1620e4b03ee10b15550b/546c7f92e4b02e200e588cf7/1421365875746/fingerprint-modified-clipart+2.png"/></li> 
             <li class="circle finger2"><img width="50" src="http://static1.squarespace.com/static/54537226e4b0bcd610a53128/546a1620e4b03ee10b15550b/546c7f92e4b02e200e588cf7/1421365875746/fingerprint-modified-clipart+2.png"/></li> 
@@ -39,7 +39,7 @@
             <li class="circle finger5"><img width="50" src="http://static1.squarespace.com/static/54537226e4b0bcd610a53128/546a1620e4b03ee10b15550b/546c7f92e4b02e200e588cf7/1421365875746/fingerprint-modified-clipart+2.png"/></li> 
             <li style="display:none;position:absolute" class="hand"><img src="http://www.iconexperience.com/_img/m_collection_png/256x256/plain/hand_grab.png" width="100" height="100"> </li>
         </ul>
-        
+
         <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
         <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
         <!-- Bootstrap CDN -->
@@ -47,6 +47,6 @@
         <script src="http://js.leapmotion.com/leap-0.6.3.min.js"></script>
         <script src="http://js.leapmotion.com/leap-plugins-0.1.10.js"></script>
         <script src="assets/js/drag.js"></script>
-
+        <script src="assets/js/LayoutManager.js"></script>
     </body>
 </html>
