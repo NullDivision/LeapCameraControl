@@ -1,4 +1,12 @@
 var options = {enableGestures: true};
+LayoutManager = {
+  release:function(x,y){
+    console.log('release');
+  },
+  grab:function(x,y){
+    console.log('grabbed');
+  }
+};
 
 Leap.loop(options, function (frame) {
     if (frame.pointables.length > 0) {
@@ -15,5 +23,23 @@ Leap.loop(options, function (frame) {
             i++;
         });
 
+    }
+    for (var i = 0, len = frame.hands.length; i < len; i++) {
+        hand = frame.hands[i];
+        var position = hand.screenPosition();
+        var pointer = $("#pointer");
+        var x = position[0] - pointer.width()  / 2;
+        var y = position[1] - pointer.height() / 2;
+        if(hand.confidence > .7){
+          if (hand.grabStrength >= 0.6) {
+            LayoutManager.grab(x, y);
+            grabbed = true;
+          } else {
+            if(grabbed) {
+              LayoutManager.release(x, y);
+              grabbed = false;
+            }
+          }
+        }
     }
 });

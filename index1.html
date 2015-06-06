@@ -1,5 +1,109 @@
 <!doctype html>
 <html lang="en">
+<<<<<<< HEAD
+<head>
+  <meta charset="utf-8">
+  <title>jQuery UI Sortable - Connect lists</title>
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+  <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+  
+   <script src="http://js.leapmotion.com/leap-0.6.3.min.js"></script>
+   <script src="http://js.leapmotion.com/leap-plugins-0.1.10.js"></script>
+   
+   
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+  
+  <style>
+  #sortable1, #sortable2 {
+    border: 1px solid #eee;
+    width: 142px;
+    min-height: 20px;
+    list-style-type: none;
+    margin: 0;
+    padding: 5px 0 0 0;
+    float: left;
+    margin-right: 10px;
+  }
+  #sortable1 li, #sortable2 li {
+    margin: 0 5px 5px 5px;
+    padding: 5px;
+    font-size: 1.2em;
+    width: 120px;
+  }
+  </style>
+  <script>
+  $(function() {
+    $( "#sortable1, #sortable2" ).sortable({
+      connectWith: ".connectedSortable"
+    }).disableSelection();
+  });
+  </script>
+</head>
+<body>
+
+<ul id="sortable1" class="connectedSortable">
+  <li class="ui-state-default">Item 1</li>
+  <li class="ui-state-default">Item 2</li>
+  <li class="ui-state-default">Item 3</li>
+  <li class="ui-state-default">Item 4</li>
+  <li class="ui-state-default">Item 5</li>
+</ul>
+ 
+<ul id="sortable2" class="connectedSortable">
+  <li class="ui-state-highlight">Item 1</li>
+  <li class="ui-state-highlight">Item 2</li>
+  <li class="ui-state-highlight">Item 3</li>
+  <li class="ui-state-highlight">Item 4</li>
+  <li class="ui-state-highlight">Item 5</li>
+</ul>
+ <div style="clear:both"></div>
+ <div id="drag" style="background-color:red; width:200px; height:300px;">
+ </div>
+ <div id="pointer" style="background-color:green; width:10px; height:10px; position:absolute;">
+ </div>
+
+ <div id="result">
+ </div>
+ <script type="text/javascript">
+    var options = { enableGestures: true };
+    LayoutManager = {
+      release:function(x,y){
+        console.log('release');
+      },
+      grab:function(x,y){
+        console.log('grabbed');
+      }
+    };
+    var grabbed = false;
+    Leap.loop(options, function(frame) {
+      for (var i = 0, len = frame.hands.length; i < len; i++) {
+        hand = frame.hands[i];
+        $('#result').html('Grab:'+hand.grabStrength);
+        
+        var position = hand.screenPosition();
+        var pointer = $("#pointer");
+        var left = position[0] - pointer.width()  / 2;
+        var top = position[1] - pointer.height() / 2;
+
+        pointer.css({top: top+ 'px', left: left+ 'px', position:'absolute'});
+        if(hand.confidence > .7){
+          if (hand.grabStrength >= 0.6) {
+            LayoutManager.grab(left, top);
+            grabbed = true;
+          } else {
+            if(grabbed) {
+              LayoutManager.release(left, top);
+              grabbed = false;
+            }
+          }
+        }
+      }
+
+    }).use('screenPosition', {scale: 0.5});
+ </script>
+</body>
+=======
     <head>
         <meta charset="utf-8">
         <title>jQuery UI Sortable - Connect lists</title>
@@ -125,4 +229,5 @@
 
         </script>
     </body>
+>>>>>>> 79ef0abb32c240c32197d42d1e3b517d71d40adf
 </html>
