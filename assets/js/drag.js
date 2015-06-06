@@ -1,36 +1,26 @@
 var options = {enableGestures: true};
 
-
-
-LayoutManager = {
-  grabbed: false,
-  release:function(x,y){
+LayoutManager.grabbed = LayoutManager.drag;
+LayoutManager.release = function(x,y){
     console.log('release');
     $('.hand').hide();
     $('.circle').show();
     this.grabbed = false;
-  },
-  grab:function(x,y){
-    console.log('grabbed');
-    $('.hand').show().css({top:y+'px',left:x+'px',position:'absolute'});
-    $('.circle').hide();
-    this.grabbed = true;
-  },
-  pull: function(x, y, z){
+};
+LayoutManager.pull = function(x, y, z){
     console.log("pulled:"+x+","+y+","+z);
-  },
-  swipe: function (x,y){
+};
+LayoutManager.swipe = function (x,y){
     console.log("swiped");
-  },
-  tap: function (x,y){
+};
+LayoutManager.tap = function (x,y){
     console.log("tapped");
-  },
-  keyTap: function (x,y){
+};
+LayoutManager.keyTap = function (x,y){
     console.log("keytap");
-  },
-  circle: function (x,y){
+};
+LayoutManager.circle = function (x,y){
     console.log("circle");
-  }
 };
 
 function reloadImage() {
@@ -43,17 +33,17 @@ function reloadImage() {
     } catch( e){
         console.log(e);
     }
-    
+
 }
 setInterval(reloadImage, 20);
- 
+
 var marginTop = 399;
 var grabbed = false;
 Leap.loop(options, function (frame) {
     var leap = this;
-    
-    
-    
+
+
+
     if (frame.pointables.length > 0) {
         var i = 1;
         frame.pointables.forEach(function (pointable) {
@@ -88,7 +78,7 @@ Leap.loop(options, function (frame) {
         if (z >= 1) {
             if(LayoutManager.grabbed){
                 LayoutManager.pull(x, y, z);
-            }      
+            }
         }
     }
     frame.gestures.forEach(function(gesture){
