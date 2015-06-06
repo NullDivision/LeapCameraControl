@@ -15,6 +15,16 @@ LayoutManager = {
     $('.circle').hide();
   }
 };
+var x = 0;
+function reloadImage(){
+    if(!$("#image")[0].complete)
+        return;
+    x++;
+    var url = "http://10.0.0.21:8080/img.jpg?"+x;
+    $("#image").attr('src',url);
+    console.log('reload');
+}
+setInterval(reloadImage, 40);
 var grabbed = false;
 
 var clamp = false;   
@@ -41,6 +51,7 @@ Leap.loop(options, function (frame) {
         });
 
     }
+
     for (var i = 0, len = frame.hands.length; i < len; i++) {
         hand = frame.hands[i];
 
