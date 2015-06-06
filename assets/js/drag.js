@@ -58,8 +58,8 @@ Leap.loop(options, function (frame) {
         var y = window.innerHeight * (1 - normalized[1])+marginTop;
         var z = normalized[2];
 
-        if(hand.confidence > 0.2){
-            if (hand.grabStrength >= 0.6) {
+        if(hand.confidence > 0.5){
+            if (hand.grabStrength >= 0.7) {
                 LayoutManager.grab(x, y);
             } else {
                 LayoutManager.release(x, y);
