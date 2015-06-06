@@ -3,16 +3,21 @@ var options = {enableGestures: true};
 
 
 LayoutManager = {
+  grabbed: false,
   release:function(x,y){
     console.log('release');
     $('.hand').hide();
     $('.circle').show();
-
+    this.grabbed = false;
   },
   grab:function(x,y){
     console.log('grabbed');
     $('.hand').show().css({top:y+'px',left:x+'px',position:'absolute'});
     $('.circle').hide();
+    this.grabbed = true;
+  },
+  pull: function(x, y, z){
+    console.log("pulled:"+x+","+y+","+z);
   }
 };
 var x = 0;
@@ -24,12 +29,8 @@ function reloadImage(){
     $("#image").attr('src',url);
     console.log('reload');
 }
-setInterval(reloadImage, 40);
-var grabbed = false;
-
-var clamp = false;   
-var appWidth = window.screen.width;
-var appHeight = window.screen.height;
+//setInterval(reloadImage, 40);
+ 
 var marginTop = 399;
 Leap.loop(options, function (frame) {
     var leap = this;
@@ -54,22 +55,23 @@ Leap.loop(options, function (frame) {
 
     for (var i = 0, len = frame.hands.length; i < len; i++) {
         hand = frame.hands[i];
-
-        var pointable = frame.pointables[0];
-        var position = pointable.stabilizedTipPosition;
         var normalized = frame.interactionBox.normalizePoint(hand.palmPosition);
         var x = window.innerWidth * normalized[0];
         var y = window.innerHeight * (1 - normalized[1])+marginTop;
+        var z = normalized[2];
         if(hand.confidence > 0.2){
           if (hand.grabStrength >= 0.6) {
             LayoutManager.grab(x, y);
-            grabbed = true;
           } else {
-            if(grabbed) {
+            if(LayoutManager.grabbed) {
               LayoutManager.release(x, y);
-              grabbed = false;
             }
           }
+        }
+        if (z >= 1) {
+            if(LayoutManager.grabbed){
+                LayoutManager.pull(x, y, z);
+            }      
         }
     }
 }).use('screenPosition', {scale: 0.5});
