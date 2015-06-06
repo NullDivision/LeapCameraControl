@@ -1,0 +1,55 @@
+body, html { background-color: #191919; height: 100%; }
+
+.feed-container {
+    background-color: #646464;
+    border: 1px solid #352C2C;
+    box-shadow: 0 0 5px #000;
+    width: 1920px;
+    height: 1080px;
+    display: inline-block;
+}
+.row, .row > section { height: 100%; }
+
+#page { background-color: #191919; height: 100%; width: 100%; }
+#camera-feeds .feed-container { margin: 10px; zoom: 10%; }
+#main-camera .feed-container {
+    zoom: 0.45;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0 auto;
+}
+
+.finger1 {
+    left:0px;
+}
+.finger2 {
+    left:100px;
+}
+.finger3 {
+    left:200px
+}
+.finger4 {
+    left:300px
+}
+.circle.finger5 {
+    left:400px;
+    width: 40px;
+    height: 40px;
+}
+.circle {
+    width: 50px;
+    height: 50px;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    border-radius: 25px; 
+    position: absolute;
+    list-style: none;   
+    border-style: dotted solid;
+    border-color: #ff0000;
+}
+.fingers {
+    width:100%;
+    height: 100%;   
+}
