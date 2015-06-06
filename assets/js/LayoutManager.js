@@ -58,7 +58,7 @@
                     this.draggable.prependTo('#camera-feeds');
                 }
 
-                this.draggable.removeClass('dragging');
+                this.draggable.removeClass('dragging').removeAttr('style');
             }
 
             this.drag = false;
