@@ -8,6 +8,10 @@
         };
 
         layoutManager.move = function (posX, posY) {
+            if (!this.drag) {
+                return false;
+            }
+
             $('.hand').css({top: posY + 'px', left: posX + 'px'});
             this.draggable.css({top: posY + 'px', left: posX + 'px'});
         };
@@ -41,8 +45,10 @@
         layoutManager.release = function () {
             $('.hand').addClass('hidden');
             $('.circle').show();
-            if(this.draggable)
-            this.draggable.removeClass('dragging');
+
+            if (this.draggable) {
+                this.draggable.removeClass('dragging');
+            }
 
             this.drag = false;
             this.draggable = null;
