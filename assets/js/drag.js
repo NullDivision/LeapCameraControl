@@ -64,3 +64,50 @@ Leap.loop(options, function (frame) {
         }
     });
 }).use('screenPosition', {scale: 0.5});
+
+
+//STREAMING
+var socket;
+var streams = [];
+
+function init() {
+  var host = "ws://10.0.0.35:9000/echobot"; // SET THIS TO YOUR SERVER
+  try {
+      socket = new WebSocket(host);
+      console.log('WebSocket - status '+socket.readyState);
+      socket.onopen    = function(msg) { 
+                   console.log("Welcome - status "+this.readyState); 
+                 };
+      socket.onmessage = function(msg) { 
+                  data = JSON.parse(msg.data);
+                  if (data) {
+                    if (data.cmd == 5) {
+                      streams[data.usr] = data.data;
+                      render();
+                    }
+                  }
+                  //  console.log("Received: "+msg.data); 
+                 };
+      socket.onclose   = function(msg) { 
+                   console.log("Disconnected - status "+this.readyState); 
+                 };
+    }
+    catch(ex){ 
+      console.log(ex); 
+    }
+  }
+function render()
+{
+  for(var id in streams) {
+    var ids = 'stream' + id;
+    if($('#'+ids).length) {
+        $('#'+ids+" img").attr('src', 'data:image/jpg;base64,'+streams[id]);
+    } else {
+        var str = '<div class="feed-container" id="'+ids+'"><img src="data:image/jpg;base64,'+streams[id]+'" /></div>';
+        $('#camera-feeds').append(str);
+    }
+  }
+}
+$( document ).ready(function() {
+  init();
+});
