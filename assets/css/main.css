@@ -8,6 +8,7 @@ body, html { background-color: #191919; height: 100%; }
     height: 1080px;
     display: inline-block;
 }
+.dragging { position: absolute; }
 .row, .row > section { height: 100%; }
 
 #page { background-color: #191919; height: 100%; width: 100%; }
@@ -43,13 +44,13 @@ body, html { background-color: #191919; height: 100%; }
     height: 50px;
     -webkit-border-radius: 25px;
     -moz-border-radius: 25px;
-    border-radius: 25px; 
+    border-radius: 25px;
     position: absolute;
-    list-style: none;   
+    list-style: none;
     border-style: dotted solid;
     border-color: #ff0000;
 }
 .fingers {
     width:100%;
-    height: 100%;   
+    height: 100%;
 }
