@@ -27,21 +27,26 @@ function computeZ(axisZ) {
 var marginTop = 0;
 Leap.loop(options, function (frame) {
     var leap = this;
+    if(frame.hands.length == 0){
+        LayoutManager.release(x, y, false);
+    }
     for (var i = 0, len = frame.hands.length; i < len; i++) {
         hand = frame.hands[i];
         var normalized = frame.interactionBox.normalizePoint(hand.palmPosition);
         var x = window.innerWidth * normalized[0];
         var y = window.innerHeight * (1 - normalized[1])+marginTop;
         var z = normalized[2];
-        $('.finger1').css({
+        $('.open-hand').css({
             left: x,
             top: y
         });
-        if(hand.confidence > 0.3){
+        if(hand.confidence > 0.4){
             if (hand.grabStrength >= 0.7) {
                 LayoutManager.grab(x, y);
+                $(".open-hand").hide();
             } else {
-                LayoutManager.release(x, y);
+                LayoutManager.release(x, y, true);
+                $('.open-hand').show();
             }
         }
         LayoutManager.move(x, y);

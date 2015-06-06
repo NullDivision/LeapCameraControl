@@ -62,8 +62,6 @@ body, html { background-color: #191919; height: 100%; overflow: hidden; }
     border-radius: 25px;
     position: absolute;
     list-style: none;
-    border-style: dotted solid;
-    border-color: #ff0000;
 }
 .fingers {
     width:100%;
