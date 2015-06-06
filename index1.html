@@ -34,6 +34,7 @@
     <script type="text/javascript">
 var socket;
 var stream;
+var streams = [];
 
 function init() {
   var host = "ws://10.0.0.35:9000/echobot"; // SET THIS TO YOUR SERVER
@@ -44,8 +45,13 @@ function init() {
                    console.log("Welcome - status "+this.readyState); 
                  };
       socket.onmessage = function(msg) { 
-        console.log(msg);
-                  $('#stream').attr('src', 'data:image/jpg;base64,'+msg.data);
+                  data = JSON.parse(msg.data);
+                  if (data) {
+                    if (data.cmd = 5) {
+                      streams[data.usr] = data.data;
+                      render();
+                    }
+                  }
                   //  console.log("Received: "+msg.data); 
                  };
       socket.onclose   = function(msg) { 
@@ -56,6 +62,19 @@ function init() {
       console.log(ex); 
     }
   }
+function render()
+{
+  for(var id in streams) {
+    var ids = 'stream' + id;
+    if($('#'+ids).length) {
+      $('#'+ids).attr('src', 'data:image/jpg;base64,'+streams[id]);
+    } else {
+      var str = '<img id="'+ids+'" src="data:image/jpg;base64,'+streams[id]+'" />';
+       console.log(str);
+       $('#result').append(str);
+    }
+  }
+}
 $( document ).ready(function() {
   init();
 });
@@ -111,7 +130,7 @@ $( document ).ready(function() {
     </script>
   </head>
   <body>
-  <img src="" id="stream"/>
+  <div id="result"></div>
 <input type="text" id="msg" name="msg"/>
 <button onclick="send()">Send</button>
   </body>
