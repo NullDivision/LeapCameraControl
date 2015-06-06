@@ -39,8 +39,10 @@
         layoutManager.release = function () {
             $('.hand').addClass('hidden');
             $('.circle').show();
+            this.draggable.removeClass('dragging');
 
             this.drag = false;
+            this.draggable = null;
 
             return true;
         };
