@@ -42,4 +42,4 @@ Leap.loop(options, function (frame) {
           }
         }
     }
-});
+}).use('screenPosition', {scale: 0.5});;
