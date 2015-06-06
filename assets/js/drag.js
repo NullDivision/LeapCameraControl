@@ -1,4 +1,6 @@
 var options = {enableGestures: true};
+var socket;
+var streams = [];
 
 LayoutManager.swipe = function (x,y){
     console.log("swiped");
@@ -8,9 +10,6 @@ LayoutManager.tap = function (x,y){
 };
 LayoutManager.keyTap = function (x,y){
     console.log("keytap");
-};
-LayoutManager.circle = function (x,y){
-    console.log("circle");
 };
 
 function computeZ(axisZ) {
@@ -51,7 +50,7 @@ Leap.loop(options, function (frame) {
     frame.gestures.forEach(function(gesture){
         switch (gesture.type){
           case "circle":
-              LayoutManager.circle(x, y);
+              LayoutManager.circle(x, y, hand.roll(), socket);
               break;
           case "keyTap":
               LayoutManager.keyTap(x, y);
@@ -67,8 +66,6 @@ Leap.loop(options, function (frame) {
 
 
 //STREAMING
-var socket;
-var streams = [];
 
 function init() {
   var host = "ws://10.0.0.35:9000/echobot"; // SET THIS TO YOUR SERVER
@@ -103,9 +100,22 @@ function render()
     if($('#'+ids).length) {
         $('#'+ids+" img").attr('src', 'data:image/jpg;base64,'+streams[id]);
     } else {
-        var str = '<div class="feed-container" id="'+ids+'"><img src="data:image/jpg;base64,'+streams[id]+'" /></div>';
+        var str = '<div class="feed-container"  id="'+ids+'"><img class="feed-img" src="data:image/jpg;base64,'+streams[id]+'" usr="'+id+'"/></div>';
         $('#camera-feeds').append(str);
     }
+  }
+}
+
+function send(msg){
+  if(!msg) { 
+    alert("Message can not be empty"); 
+    return; 
+  }
+  try { 
+    socket.send(msg); 
+    console.log('Sent: '+msg); 
+  } catch(ex) { 
+    console.log(ex); 
   }
 }
 $( document ).ready(function() {

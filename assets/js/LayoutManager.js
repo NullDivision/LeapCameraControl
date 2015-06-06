@@ -6,6 +6,7 @@
             drag: false,
             draggable: null
         };
+        var t;
 
         layoutManager.move = function (posX, posY) {
             if (!this.drag) {
@@ -85,6 +86,26 @@
             return true;
         };
 
+        layoutManager.circle = function(posX, posY, rotationRad, socket) {
+            var element = window.document.elementsFromPoint(posX, posY);
+            var rotation = rotationRad * (180/3.14);
+            console.log(rotation);
+            if ($(element).hasClass('feed-img')) {
+                if (rotation < -50) {
+                    // if(t != null) { clearTimeout(t);}
+                    // t = setTimeout(function(){
+                        send('{"cmd":1, "usr":'+$(element).attr('usr')+"}");//}
+                    // , 500);
+                }
+                if (rotation > 50) {
+                    // if(t != null) { clearTimeout(t);}
+                    // t = setTimeout(function(){
+                        send('{"cmd":2, "usr":'+$(element).attr('usr')+"}");//}
+                    // , 500);
+                }
+                
+            }
+        };
         return layoutManager;
     }());
 }(window, jQuery));
