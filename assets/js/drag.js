@@ -22,13 +22,44 @@ function computeZ(axisZ) {
     }
     return axisZ;
 }
-
+var eventsHistory = [];
 var marginTop = 0;
 Leap.loop(options, function (frame) {
     var leap = this;
     if(frame.hands.length == 0){
         LayoutManager.release(x, y, false);
     }
+    if(frame.hands.length==2) {
+        
+        x1 = frame.hands[0].palmPosition[0];
+        x2 = frame.hands[1].palmPosition[0];
+        distance = getDistance(x1, x2);
+        if(distance > 100 && eventsHistory.indexOf(100) == -1) {
+            eventsHistory.push(100);
+        }
+        
+        if(distance < 50 && eventsHistory.indexOf(100) != -1) {
+            eventsHistory.push(50);
+        }
+        
+        
+        
+        if(distance < 50 && eventsHistory.indexOf(50) == -1) {
+            eventsHistory.push(50);
+        }
+        
+        if(distance > 100 && eventsHistory.indexOf(50) == -1) {
+            eventsHistory.push(50);
+        }
+        
+        if(eventsHistory[0]> eventsHistory[1]){LayoutManager.zoomIn(socket);
+        } else {
+            LayoutManager.zoomOut(socket);
+        }
+
+        if(eventsHistory.length >= 2)eventsHistory = [];
+    }
+    
     for (var i = 0, len = frame.hands.length; i < len; i++) {
         hand = frame.hands[i];
         var normalized = frame.interactionBox.normalizePoint(hand.palmPosition);
@@ -49,7 +80,7 @@ Leap.loop(options, function (frame) {
             }
         }
         if(hand.pinchStrength > 0) {
-          LayoutManager.zoom(x, y, hand.pinchStrength, socket);
+         // LayoutManager.zoom(x, y, hand.pinchStrength, socket);
         }
         LayoutManager.move(x, y);
         LayoutManager.pull(computeZ(z));
@@ -68,6 +99,20 @@ Leap.loop(options, function (frame) {
     });
 }).use('screenPosition', {scale: 0.5});
 
+
+function getDistance(x1, x2){
+    min = Math.max(x1,x2);
+    max = Math.min(x1,x2);
+    var distance;
+    if(min<0 && max< 0){
+        distance = Math.abs(min-max);
+    } else if(min <0 && max >=0){
+        distance = Math.abs(max-min);
+    } else {
+        distance = Math.abs(max-min);
+    }
+    return distance;
+}
 
 //STREAMING
 
