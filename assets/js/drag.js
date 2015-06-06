@@ -2,7 +2,20 @@ var options = {enableGestures: true};
 
 
 
-LayoutManager = {
+function reloadImage() {
+    if (!$("#image")[0].complete){
+        return;
+    }
+    var url = "http://10.0.0.21:8080/img.jpg?" + Math.floor(Date.now() / 1000);
+    try{
+        $("#image").attr('src', url);
+    } catch( e){
+        console.log(e);
+    }
+    
+}
+//setInterval(reloadImage, 20);
+ var LayoutManager = {
   grabbed: false,
   release:function(x,y){
     console.log('release');
@@ -32,23 +45,7 @@ LayoutManager = {
     console.log("circle");
   }
 };
-
-function reloadImage() {
-    if (!$("#image")[0].complete){
-        return;
-    }
-    var url = "http://10.0.0.21:8080/img.jpg?" + Math.floor(Date.now() / 1000);
-    try{
-        $("#image").attr('src', url);
-    } catch( e){
-        console.log(e);
-    }
-    
-}
-setInterval(reloadImage, 20);
- 
 var marginTop = 399;
-var grabbed = false;
 Leap.loop(options, function (frame) {
     var leap = this;
     
@@ -107,3 +104,4 @@ Leap.loop(options, function (frame) {
         }
     });
 }).use('screenPosition', {scale: 0.5});
+
