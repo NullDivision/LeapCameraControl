@@ -1,9 +1,5 @@
 var options = {enableGestures: true};
 
-LayoutManager.grabbed = LayoutManager.drag;
-LayoutManager.pull = function(z){
-    console.log("pulled:");
-};
 LayoutManager.swipe = function (x,y){
     console.log("swiped");
 };
@@ -30,7 +26,6 @@ function computeZ(axisZ) {
 }
 
 var marginTop = 0;
-var grabbed = false;
 Leap.loop(options, function (frame) {
     var leap = this;
     for (var i = 0, len = frame.hands.length; i < len; i++) {
@@ -51,10 +46,8 @@ Leap.loop(options, function (frame) {
             }
         }
         LayoutManager.move(x, y);
-        if (z >= 1) {
-            LayoutManager.pull(z);
-        }    
-	}
+        LayoutManager.pull(z);
+    }
     frame.gestures.forEach(function(gesture){
         switch (gesture.type){
           case "circle":

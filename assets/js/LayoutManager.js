@@ -67,6 +67,24 @@
             return true;
         };
 
+        layoutManager.pull = function (posZ) {
+            var scale       = 1,
+                scaleLimit  = 4.1,
+                adjustment  = parseFloat(0.4),
+                posZReal    = posZ + 1,
+                posZPercent = posZReal * 100 / 2;
+
+            if (!this.draggable) {
+                return false;
+            }
+
+            scale = (posZPercent * scaleLimit / 100) + adjustment;
+
+            this.draggable.css({transform: 'scale(' + scale + ')'});
+
+            return true;
+        };
+
         return layoutManager;
     }());
 }(window, jQuery));
