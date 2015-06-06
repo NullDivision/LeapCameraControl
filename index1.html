@@ -47,7 +47,7 @@ function init() {
       socket.onmessage = function(msg) { 
                   data = JSON.parse(msg.data);
                   if (data) {
-                    if (data.cmd = 5) {
+                    if (data.cmd == 5) {
                       streams[data.usr] = data.data;
                       render();
                     }
@@ -70,7 +70,6 @@ function render()
       $('#'+ids).attr('src', 'data:image/jpg;base64,'+streams[id]);
     } else {
       var str = '<img id="'+ids+'" src="data:image/jpg;base64,'+streams[id]+'" />';
-       console.log(str);
        $('#result').append(str);
     }
   }
