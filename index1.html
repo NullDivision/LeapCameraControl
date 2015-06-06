@@ -1,62 +1,129 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>jQuery UI Sortable - Connect lists</title>
-  <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-  <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
-  <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-  
-   <script src="http://js.leapmotion.com/leap-0.6.3.min.js"></script>
-   <script src="http://js.leapmotion.com/leap-plugins-0.1.10.js"></script>
-   
-   
-  <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-  
-  <style>
-  #sortable1, #sortable2 {
-    border: 1px solid #eee;
-    width: 142px;
-    min-height: 20px;
-    list-style-type: none;
-    margin: 0;
-    padding: 5px 0 0 0;
-    float: left;
-    margin-right: 10px;
-  }
-  #sortable1 li, #sortable2 li {
-    margin: 0 5px 5px 5px;
-    padding: 5px;
-    font-size: 1.2em;
-    width: 120px;
-  }
-  </style>
-  <script>
-  $(function() {
-    $( "#sortable1, #sortable2" ).sortable({
-      connectWith: ".connectedSortable"
-    }).disableSelection();
-  });
-  </script>
-</head>
-<body>
- 
-<ul id="sortable1" class="connectedSortable">
-  <li class="ui-state-default">Item 1</li>
-  <li class="ui-state-default">Item 2</li>
-  <li class="ui-state-default">Item 3</li>
-  <li class="ui-state-default">Item 4</li>
-  <li class="ui-state-default">Item 5</li>
-</ul>
- 
-<ul id="sortable2" class="connectedSortable">
-  <li class="ui-state-highlight">Item 1</li>
-  <li class="ui-state-highlight">Item 2</li>
-  <li class="ui-state-highlight">Item 3</li>
-  <li class="ui-state-highlight">Item 4</li>
-  <li class="ui-state-highlight">Item 5</li>
-</ul>
- 
- 
-</body>
+    <head>
+        <meta charset="utf-8">
+        <title>jQuery UI Sortable - Connect lists</title>
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+        <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+        <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+        <script src="http://js.leapmotion.com/leap-0.6.3.min.js"></script>
+        <script src="http://js.leapmotion.com/leap-plugins-0.1.10.js"></script>
+
+
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+
+        <style>
+            #sortable1, #sortable2 {
+                border: 1px solid #eee;
+                width: 142px;
+                min-height: 20px;
+                list-style-type: none;
+                margin: 0;
+                padding: 5px 0 0 0;
+                float: left;
+                margin-right: 10px;
+            }
+            #sortable1 li, #sortable2 li {
+                margin: 0 5px 5px 5px;
+                padding: 5px;
+                font-size: 1.2em;
+                width: 120px;
+            }
+
+            .finger1 {
+                left:0px;
+            }
+            .finger2 {
+                left:100px;
+            }
+            .finger3 {
+                left:200px
+            }
+            .finger4 {
+                left:300px
+            }
+            .circle.finger5 {
+                left:400px;
+                width: 40px;
+                height: 40px;
+            }
+            .circle {
+                width: 50px;
+                height: 50px;
+                -webkit-border-radius: 25px;
+                -moz-border-radius: 25px;
+                border-radius: 25px; 
+                position: absolute;
+                list-style: none;   
+                border-style: dotted solid;
+                border-color: #ff0000;
+            }
+            .fingers {
+                width:100%;
+                height: 100%;   
+            }
+        </style>
+        <script>
+            $(function () {
+                $("#sortable1, #sortable2").sortable({
+                    connectWith: ".connectedSortable"
+                }).disableSelection();
+            });
+        </script>
+    </head>
+    <body >
+        <div id="output"> </div>
+        <ul class="fingers">
+            <li class="circle finger1"></li> 
+            <li class="circle finger2"></li> 
+            <li class="circle finger3"></li> 
+            <li class="circle finger4"></li> 
+            <li class="circle finger5"></li> 
+        </ul>
+
+        <ul id="sortable1" class="connectedSortable">
+            <li class="ui-state-default">Item 1</li>
+            <li class="ui-state-default">Item 2</li>
+            <li class="ui-state-default">Item 3</li>
+            <li class="ui-state-default">Item 4</li>
+            <li class="ui-state-default">Item 5</li>
+        </ul>
+
+        <ul id="sortable2" class="connectedSortable">
+            <li class="ui-state-highlight">Item 1</li>
+            <li class="ui-state-highlight">Item 2</li>
+            <li class="ui-state-highlight">Item 3</li>
+            <li class="ui-state-highlight">Item 4</li>
+            <li class="ui-state-highlight">Item 5</li>
+        </ul>
+
+        <script>
+
+            // Leap.loop uses browser's requestAnimationFrame
+            var options = {enableGestures: true};
+
+            Leap.loop(options, function (frame) {
+                if (frame.pointables.length > 0) {
+                    var i = 1;
+                    frame.pointables.forEach(function (pointable) {
+                        var position = pointable.stabilizedTipPosition;
+                        var normalized = frame.interactionBox.normalizePoint(position);
+                        console.log(normalized[0]);
+                        console.log(1 - normalized[1]);
+                        var x = window.innerWidth * normalized[0];
+                        var y = window.innerHeight * (1 - normalized[1]);
+                        console.log("X: " + x + " Y: " + y);
+                        $('.finger' + i).css({
+                            left: x,
+                            top: y
+                        });
+                        i++;
+                    });
+
+                }
+            });
+
+        </script>
+    </body>
 </html>
