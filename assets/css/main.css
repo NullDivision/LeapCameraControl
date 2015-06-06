@@ -19,11 +19,13 @@ body, html { background-color: #191919; height: 100%; overflow: hidden; }
 .row, .row > section { height: 100%; }
 
 #page { background-color: #191919; height: 100%; width: 100%; }
+#camera-feeds { box-shadow: -3px 0px 8px #000; }
 #camera-feeds .feed-container {
     margin: 10px;
     -moz-transform: scale(.1);
     -moz-transform-origin: 0% 0%;
 }
+#main-camera { background-color: #0A0909; }
 #main-camera .feed-container {
     position: relative;
     top: 50%;
