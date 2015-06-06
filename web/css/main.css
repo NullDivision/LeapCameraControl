@@ -20,3 +20,36 @@ body, html { background-color: #191919; height: 100%; }
     transform: translate(-50%, -50%);
     margin: 0 auto;
 }
+
+.finger1 {
+    left:0px;
+}
+.finger2 {
+    left:100px;
+}
+.finger3 {
+    left:200px
+}
+.finger4 {
+    left:300px
+}
+.circle.finger5 {
+    left:400px;
+    width: 40px;
+    height: 40px;
+}
+.circle {
+    width: 50px;
+    height: 50px;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    border-radius: 25px; 
+    position: absolute;
+    list-style: none;   
+    border-style: dotted solid;
+    border-color: #ff0000;
+}
+.fingers {
+    width:100%;
+    height: 100%;   
+}
