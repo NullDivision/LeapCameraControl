@@ -61,9 +61,7 @@ Leap.loop(options, function (frame) {
             }
         }
         LayoutManager.move(x, y);
-        if (z >= 1) {
-            LayoutManager.pull(z);
-        }
+        LayoutManager.pull(z);
     }
     frame.gestures.forEach(function(gesture){
         switch (gesture.type){
