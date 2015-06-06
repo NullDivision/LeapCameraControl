@@ -11,7 +11,6 @@
      <script src="http://js.leapmotion.com/leap-plugins-0.1.10.js"></script>
      
      
-    <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
     
     <style>
     #sortable1, #sortable2 {
@@ -34,18 +33,24 @@
     <script type="text/javascript">
 var socket;
 var stream;
+var streams = [];
 
 function init() {
   var host = "ws://10.0.0.35:9000/echobot"; // SET THIS TO YOUR SERVER
   try {
       socket = new WebSocket(host);
-      log('WebSocket - status '+socket.readyState);
+      console.log('WebSocket - status '+socket.readyState);
       socket.onopen    = function(msg) { 
                    console.log("Welcome - status "+this.readyState); 
                  };
       socket.onmessage = function(msg) { 
-        console.log(msg);
-                  // $('#stream').attr('src', msg);
+                  data = JSON.parse(msg.data);
+                  if (data) {
+                    if (data.cmd == 5) {
+                      streams[data.usr] = data.data;
+                      render();
+                    }
+                  }
                   //  console.log("Received: "+msg.data); 
                  };
       socket.onclose   = function(msg) { 
@@ -56,7 +61,21 @@ function init() {
       console.log(ex); 
     }
   }
-
+function render()
+{
+  for(var id in streams) {
+    var ids = 'stream' + id;
+    if($('#'+ids).length) {
+      $('#'+ids).attr('src', 'data:image/jpg;base64,'+streams[id]);
+    } else {
+      var str = '<img id="'+ids+'" src="data:image/jpg;base64,'+streams[id]+'" />';
+       $('#result').append(str);
+    }
+  }
+}
+$( document ).ready(function() {
+  init();
+});
   // function initStream() {
   // var host = "ws://10.0.0.35:9001/echobot"; // SET THIS TO YOUR SERVER
   // try {
@@ -108,8 +127,8 @@ function init() {
 
     </script>
   </head>
-  <body  onload="init()">
-  <img src="" id="stream"/>
+  <body>
+  <div id="result"></div>
 <input type="text" id="msg" name="msg"/>
 <button onclick="send()">Send</button>
   </body>
