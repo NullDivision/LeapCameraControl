@@ -7,6 +7,11 @@
             draggable: null
         };
 
+        layoutManager.move = function (posX, posY) {
+            $('.hand').css({top: posY + 'px', left: posX + 'px'});
+            this.draggable.css({top: posY + 'px', left: posX + 'px'});
+        };
+
         layoutManager.grab = function (posX, posY) {
             var i,
                 elements = window.document.elementsFromPoint(posX, posY),
@@ -24,8 +29,9 @@
                 this.draggable.addClass('dragging');
             }
 
-            $('.hand').css({top: posY + 'px', left: posX + 'px'}).removeClass('hidden');
             $('.circle').hide();
+            $('.hand').removeClass('hidden');
+            this.move(posX, posY);
 
             return true;
         };
