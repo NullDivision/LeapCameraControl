@@ -18,6 +18,18 @@ LayoutManager = {
   },
   pull: function(x, y, z){
     console.log("pulled:"+x+","+y+","+z);
+  },
+  swipe: function (x,y){
+    console.log("swiped");
+  },
+  tap: function (x,y){
+    console.log("tapped");
+  },
+  keyTap: function (x,y){
+    console.log("keytap");
+  },
+  circle: function (x,y){
+    console.log("circle");
   }
 };
 
@@ -79,4 +91,19 @@ Leap.loop(options, function (frame) {
             }      
         }
     }
+    frame.gestures.forEach(function(gesture){
+        switch (gesture.type){
+          case "circle":
+              LayoutManager.circle(x, y);
+              break;
+          case "keyTap":
+              LayoutManager.keyTap(x, y);
+              break;
+          case "screenTap":
+              LayoutManager.tap(x, y);
+          case "swipe":
+              LayoutManager.swipe(x, y);
+              break;
+        }
+    });
 }).use('screenPosition', {scale: 0.5});
