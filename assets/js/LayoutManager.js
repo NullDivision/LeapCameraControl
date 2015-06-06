@@ -94,18 +94,16 @@
             return true;
         };
 
-        layoutManager.circle = function(posX, posY, rotationRad, socket) {
+        layoutManager.zoom = function(posX, posY, strength, socket) {
             var element = window.document.elementsFromPoint(posX, posY);
-            var rotation = rotationRad * (180/3.14);
-            console.log(rotation);
+            console.log(strength);
             if ($(element).hasClass('feed-img')) {
-                if (rotation < -50) {
+                if (strength < 0.5 && strength >= 0.1) {
                     // if(t != null) { clearTimeout(t);}
                     // t = setTimeout(function(){
                         send('{"cmd":1, "usr":'+$(element).attr('usr')+"}");//}
                     // , 500);
-                }
-                if (rotation > 50) {
+                } else if(strength >= 0.5){
                     // if(t != null) { clearTimeout(t);}
                     // t = setTimeout(function(){
                         send('{"cmd":2, "usr":'+$(element).attr('usr')+"}");//}

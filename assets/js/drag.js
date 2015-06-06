@@ -11,7 +11,6 @@ LayoutManager.tap = function (x,y){
 LayoutManager.keyTap = function (x,y){
     console.log("keytap");
 };
-
 function computeZ(axisZ) {
     if(axisZ > 0)
         axisZ = axisZ/3;
@@ -49,14 +48,14 @@ Leap.loop(options, function (frame) {
                 $('.open-hand').show();
             }
         }
+        if(hand.pinchStrength > 0) {
+          LayoutManager.zoom(x, y, hand.pinchStrength, socket);
+        }
         LayoutManager.move(x, y);
         LayoutManager.pull(computeZ(z));
     }
     frame.gestures.forEach(function(gesture){
         switch (gesture.type){
-          case "circle":
-              LayoutManager.circle(x, y, hand.roll(), socket);
-              break;
           case "keyTap":
               LayoutManager.keyTap(x, y);
               break;
