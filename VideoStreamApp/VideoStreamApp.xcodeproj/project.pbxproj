@@ -1,0 +1,713 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4B40B89B1B22E0CE0096EF43 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B40B89A1B22E0CE0096EF43 /* main.m */; };
+		4B40B89E1B22E0CE0096EF43 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B40B89D1B22E0CE0096EF43 /* AppDelegate.m */; };
+		4B40B8A61B22E0CE0096EF43 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B40B8A51B22E0CE0096EF43 /* Images.xcassets */; };
+		4B40B8B51B22E0CE0096EF43 /* VideoStreamAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B40B8B41B22E0CE0096EF43 /* VideoStreamAppTests.m */; };
+		4B40B8C11B22E0FB0096EF43 /* RootController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B40B8BF1B22E0FB0096EF43 /* RootController.m */; };
+		4B40B8C21B22E0FB0096EF43 /* RootController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B40B8C01B22E0FB0096EF43 /* RootController.xib */; };
+		4B71E8F61B235786004E2FDA /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B71E8F51B235786004E2FDA /* libicucore.dylib */; };
+		4B71E8F81B23578D004E2FDA /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B71E8F71B23578D004E2FDA /* CFNetwork.framework */; };
+		4B71E8FA1B235795004E2FDA /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B71E8F91B235795004E2FDA /* Security.framework */; };
+		4B71E8FC1B23579B004E2FDA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B71E8FB1B23579B004E2FDA /* Foundation.framework */; };
+		4B71E8FF1B235D28004E2FDA /* CommandItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B71E8FE1B235D28004E2FDA /* CommandItem.m */; };
+		4B8B313D1B23BFEA0098D2BE /* SocketManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B8B313A1B23BFEA0098D2BE /* SocketManager.m */; };
+		4B8B313E1B23BFEA0098D2BE /* SRWebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B8B313C1B23BFEA0098D2BE /* SRWebSocket.m */; };
+		4BD02CF11B23A2E3009C9D60 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4BD02CF01B23A2E3009C9D60 /* Settings.bundle */; };
+		4BDDF0771B2301CF00365E85 /* Splash.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BDDF0761B2301CF00365E85 /* Splash.xib */; };
+		4BDDF0791B23021300365E85 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BDDF0781B23021300365E85 /* AVFoundation.framework */; };
+		4BDDF07B1B23027000365E85 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BDDF07A1B23027000365E85 /* OpenGLES.framework */; };
+		4BDDF07D1B23029600365E85 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BDDF07C1B23029600365E85 /* SystemConfiguration.framework */; };
+		4BDDF07F1B2302AA00365E85 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BDDF07E1B2302AA00365E85 /* UIKit.framework */; };
+		4BDDF0811B2302D500365E85 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BDDF0801B2302D500365E85 /* QuartzCore.framework */; };
+		4BDDF0841B230A6300365E85 /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BDDF0831B230A6300365E85 /* Utilities.m */; };
+		4BDDF0891B230D3A00365E85 /* UINavigationController+SafePushing.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BDDF0881B230D3A00365E85 /* UINavigationController+SafePushing.m */; };
+		4BDDF08C1B230FB900365E85 /* CustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BDDF08B1B230FB900365E85 /* CustomCell.m */; };
+		4BDDF08F1B230FE000365E85 /* CameraSourceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BDDF08E1B230FE000365E85 /* CameraSourceCell.m */; };
+		4BDDF0911B230FF200365E85 /* CameraSourceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BDDF0901B230FF200365E85 /* CameraSourceCell.xib */; };
+		4BDDF1021B231CBB00365E85 /* WS.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BDDF0941B231CBB00365E85 /* WS.m */; };
+		4BDDF1031B231CBB00365E85 /* JSONModel+CoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BDDF09B1B231CBB00365E85 /* JSONModel+CoreData.m */; };
+		4BDDF1041B231CBB00365E85 /* JSONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BDDF09D1B231CBB00365E85 /* JSONModel.m */; };
+		4BDDF1051B231CBB00365E85 /* JSONModelArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BDDF09F1B231CBB00365E85 /* JSONModelArray.m */; };
+		4BDDF1061B231CBB00365E85 /* JSONModelClassProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BDDF0A11B231CBB00365E85 /* JSONModelClassProperty.m */; };
+		4BDDF1071B231CBB00365E85 /* JSONModelError.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BDDF0A31B231CBB00365E85 /* JSONModelError.m */; };
+		4BDDF1081B231CBB00365E85 /* NSArray+JSONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BDDF0A61B231CBB00365E85 /* NSArray+JSONModel.m */; };
+		4BDDF1091B231CBB00365E85 /* JSONAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BDDF0AA1B231CBB00365E85 /* JSONAPI.m */; };
+		4BDDF10A1B231CBB00365E85 /* JSONHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BDDF0AC1B231CBB00365E85 /* JSONHTTPClient.m */; };
+		4BDDF10B1B231CBB00365E85 /* JSONModel+networking.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BDDF0AE1B231CBB00365E85 /* JSONModel+networking.m */; };
+		4BDDF10C1B231CBB00365E85 /* JSONKeyMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BDDF0B11B231CBB00365E85 /* JSONKeyMapper.m */; };
+		4BDDF10D1B231CBB00365E85 /* JSONValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BDDF0B31B231CBB00365E85 /* JSONValueTransformer.m */; };
+		4BDDF10F1B231CBB00365E85 /* Operation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BDDF0B61B231CBB00365E85 /* Operation.m */; };
+		4BDDF12F1B231CBB00365E85 /* UploadOperationResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BDDF0F11B231CBB00365E85 /* UploadOperationResult.m */; };
+		4BDDF1321B231CBB00365E85 /* UploadBinaryImageOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BDDF0F91B231CBB00365E85 /* UploadBinaryImageOperation.m */; };
+		4BDDF1351B231CBB00365E85 /* GenericOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BDDF1011B231CBB00365E85 /* GenericOperation.m */; };
+		4BDDF1391B231E9A00365E85 /* PostParam.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BDDF1381B231E9A00365E85 /* PostParam.m */; };
+		4BDDF13C1B231EB300365E85 /* OperationResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BDDF13B1B231EB300365E85 /* OperationResult.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4B40B8AF1B22E0CE0096EF43 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4B40B88D1B22E0CE0096EF43 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4B40B8941B22E0CE0096EF43;
+			remoteInfo = VideoStreamApp;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		4B40B8951B22E0CE0096EF43 /* VideoStreamApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VideoStreamApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4B40B8991B22E0CE0096EF43 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4B40B89A1B22E0CE0096EF43 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		4B40B89C1B22E0CE0096EF43 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		4B40B89D1B22E0CE0096EF43 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		4B40B8A51B22E0CE0096EF43 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		4B40B8AE1B22E0CE0096EF43 /* VideoStreamAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VideoStreamAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4B40B8B31B22E0CE0096EF43 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4B40B8B41B22E0CE0096EF43 /* VideoStreamAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VideoStreamAppTests.m; sourceTree = "<group>"; };
+		4B40B8BE1B22E0FB0096EF43 /* RootController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootController.h; sourceTree = "<group>"; };
+		4B40B8BF1B22E0FB0096EF43 /* RootController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootController.m; sourceTree = "<group>"; };
+		4B40B8C01B22E0FB0096EF43 /* RootController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RootController.xib; sourceTree = "<group>"; };
+		4B71E8F51B235786004E2FDA /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
+		4B71E8F71B23578D004E2FDA /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		4B71E8F91B235795004E2FDA /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		4B71E8FB1B23579B004E2FDA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		4B71E8FD1B235D28004E2FDA /* CommandItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommandItem.h; sourceTree = "<group>"; };
+		4B71E8FE1B235D28004E2FDA /* CommandItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommandItem.m; sourceTree = "<group>"; };
+		4B8B31391B23BFEA0098D2BE /* SocketManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocketManager.h; sourceTree = "<group>"; };
+		4B8B313A1B23BFEA0098D2BE /* SocketManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocketManager.m; sourceTree = "<group>"; };
+		4B8B313B1B23BFEA0098D2BE /* SRWebSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRWebSocket.h; sourceTree = "<group>"; };
+		4B8B313C1B23BFEA0098D2BE /* SRWebSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRWebSocket.m; sourceTree = "<group>"; };
+		4BD02CF01B23A2E3009C9D60 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		4BDDF0761B2301CF00365E85 /* Splash.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Splash.xib; sourceTree = "<group>"; };
+		4BDDF0781B23021300365E85 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		4BDDF07A1B23027000365E85 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		4BDDF07C1B23029600365E85 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		4BDDF07E1B2302AA00365E85 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		4BDDF0801B2302D500365E85 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		4BDDF0821B230A6300365E85 /* Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utilities.h; sourceTree = "<group>"; };
+		4BDDF0831B230A6300365E85 /* Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utilities.m; sourceTree = "<group>"; };
+		4BDDF0851B230C7900365E85 /* VideoStreamApp-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "VideoStreamApp-Prefix.pch"; path = "VideoStreamApp/VideoStreamApp-Prefix.pch"; sourceTree = SOURCE_ROOT; };
+		4BDDF0861B230D2400365E85 /* Global.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Global.h; sourceTree = "<group>"; };
+		4BDDF0871B230D3A00365E85 /* UINavigationController+SafePushing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+SafePushing.h"; sourceTree = "<group>"; };
+		4BDDF0881B230D3A00365E85 /* UINavigationController+SafePushing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+SafePushing.m"; sourceTree = "<group>"; };
+		4BDDF08A1B230FB900365E85 /* CustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCell.h; sourceTree = "<group>"; };
+		4BDDF08B1B230FB900365E85 /* CustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCell.m; sourceTree = "<group>"; };
+		4BDDF08D1B230FE000365E85 /* CameraSourceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraSourceCell.h; sourceTree = "<group>"; };
+		4BDDF08E1B230FE000365E85 /* CameraSourceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraSourceCell.m; sourceTree = "<group>"; };
+		4BDDF0901B230FF200365E85 /* CameraSourceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CameraSourceCell.xib; sourceTree = "<group>"; };
+		4BDDF0941B231CBB00365E85 /* WS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WS.m; sourceTree = "<group>"; };
+		4BDDF0951B231CBB00365E85 /* WS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WS.h; sourceTree = "<group>"; };
+		4BDDF09A1B231CBB00365E85 /* JSONModel+CoreData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JSONModel+CoreData.h"; sourceTree = "<group>"; };
+		4BDDF09B1B231CBB00365E85 /* JSONModel+CoreData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JSONModel+CoreData.m"; sourceTree = "<group>"; };
+		4BDDF09C1B231CBB00365E85 /* JSONModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONModel.h; sourceTree = "<group>"; };
+		4BDDF09D1B231CBB00365E85 /* JSONModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONModel.m; sourceTree = "<group>"; };
+		4BDDF09E1B231CBB00365E85 /* JSONModelArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONModelArray.h; sourceTree = "<group>"; };
+		4BDDF09F1B231CBB00365E85 /* JSONModelArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONModelArray.m; sourceTree = "<group>"; };
+		4BDDF0A01B231CBB00365E85 /* JSONModelClassProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONModelClassProperty.h; sourceTree = "<group>"; };
+		4BDDF0A11B231CBB00365E85 /* JSONModelClassProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONModelClassProperty.m; sourceTree = "<group>"; };
+		4BDDF0A21B231CBB00365E85 /* JSONModelError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONModelError.h; sourceTree = "<group>"; };
+		4BDDF0A31B231CBB00365E85 /* JSONModelError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONModelError.m; sourceTree = "<group>"; };
+		4BDDF0A51B231CBB00365E85 /* NSArray+JSONModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+JSONModel.h"; sourceTree = "<group>"; };
+		4BDDF0A61B231CBB00365E85 /* NSArray+JSONModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+JSONModel.m"; sourceTree = "<group>"; };
+		4BDDF0A71B231CBB00365E85 /* JSONModelLib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONModelLib.h; sourceTree = "<group>"; };
+		4BDDF0A91B231CBB00365E85 /* JSONAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONAPI.h; sourceTree = "<group>"; };
+		4BDDF0AA1B231CBB00365E85 /* JSONAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONAPI.m; sourceTree = "<group>"; };
+		4BDDF0AB1B231CBB00365E85 /* JSONHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONHTTPClient.h; sourceTree = "<group>"; };
+		4BDDF0AC1B231CBB00365E85 /* JSONHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONHTTPClient.m; sourceTree = "<group>"; };
+		4BDDF0AD1B231CBB00365E85 /* JSONModel+networking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JSONModel+networking.h"; sourceTree = "<group>"; };
+		4BDDF0AE1B231CBB00365E85 /* JSONModel+networking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JSONModel+networking.m"; sourceTree = "<group>"; };
+		4BDDF0B01B231CBB00365E85 /* JSONKeyMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKeyMapper.h; sourceTree = "<group>"; };
+		4BDDF0B11B231CBB00365E85 /* JSONKeyMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKeyMapper.m; sourceTree = "<group>"; };
+		4BDDF0B21B231CBB00365E85 /* JSONValueTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONValueTransformer.h; sourceTree = "<group>"; };
+		4BDDF0B31B231CBB00365E85 /* JSONValueTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONValueTransformer.m; sourceTree = "<group>"; };
+		4BDDF0B61B231CBB00365E85 /* Operation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Operation.m; sourceTree = "<group>"; };
+		4BDDF0B71B231CBB00365E85 /* Operation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Operation.h; sourceTree = "<group>"; };
+		4BDDF0F11B231CBB00365E85 /* UploadOperationResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadOperationResult.m; sourceTree = "<group>"; };
+		4BDDF0F81B231CBB00365E85 /* UploadOperationResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadOperationResult.h; sourceTree = "<group>"; };
+		4BDDF0F91B231CBB00365E85 /* UploadBinaryImageOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadBinaryImageOperation.m; sourceTree = "<group>"; };
+		4BDDF0FA1B231CBB00365E85 /* UploadBinaryImageOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadBinaryImageOperation.h; sourceTree = "<group>"; };
+		4BDDF1001B231CBB00365E85 /* GenericOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenericOperation.h; sourceTree = "<group>"; };
+		4BDDF1011B231CBB00365E85 /* GenericOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenericOperation.m; sourceTree = "<group>"; };
+		4BDDF1361B231E1400365E85 /* OperationProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OperationProtocol.h; sourceTree = "<group>"; };
+		4BDDF1371B231E9A00365E85 /* PostParam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostParam.h; sourceTree = "<group>"; };
+		4BDDF1381B231E9A00365E85 /* PostParam.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostParam.m; sourceTree = "<group>"; };
+		4BDDF13A1B231EB300365E85 /* OperationResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OperationResult.h; sourceTree = "<group>"; };
+		4BDDF13B1B231EB300365E85 /* OperationResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OperationResult.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4B40B8921B22E0CE0096EF43 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4B71E8FC1B23579B004E2FDA /* Foundation.framework in Frameworks */,
+				4B71E8FA1B235795004E2FDA /* Security.framework in Frameworks */,
+				4B71E8F81B23578D004E2FDA /* CFNetwork.framework in Frameworks */,
+				4B71E8F61B235786004E2FDA /* libicucore.dylib in Frameworks */,
+				4BDDF0811B2302D500365E85 /* QuartzCore.framework in Frameworks */,
+				4BDDF07F1B2302AA00365E85 /* UIKit.framework in Frameworks */,
+				4BDDF07D1B23029600365E85 /* SystemConfiguration.framework in Frameworks */,
+				4BDDF07B1B23027000365E85 /* OpenGLES.framework in Frameworks */,
+				4BDDF0791B23021300365E85 /* AVFoundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4B40B8AB1B22E0CE0096EF43 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4B40B88C1B22E0CE0096EF43 = {
+			isa = PBXGroup;
+			children = (
+				4BD02CF01B23A2E3009C9D60 /* Settings.bundle */,
+				4B71E8FB1B23579B004E2FDA /* Foundation.framework */,
+				4B71E8F91B235795004E2FDA /* Security.framework */,
+				4B71E8F71B23578D004E2FDA /* CFNetwork.framework */,
+				4B71E8F51B235786004E2FDA /* libicucore.dylib */,
+				4BDDF0801B2302D500365E85 /* QuartzCore.framework */,
+				4BDDF07E1B2302AA00365E85 /* UIKit.framework */,
+				4BDDF07C1B23029600365E85 /* SystemConfiguration.framework */,
+				4BDDF07A1B23027000365E85 /* OpenGLES.framework */,
+				4BDDF0781B23021300365E85 /* AVFoundation.framework */,
+				4B40B8971B22E0CE0096EF43 /* VideoStreamApp */,
+				4B40B8B11B22E0CE0096EF43 /* VideoStreamAppTests */,
+				4B40B8961B22E0CE0096EF43 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		4B40B8961B22E0CE0096EF43 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4B40B8951B22E0CE0096EF43 /* VideoStreamApp.app */,
+				4B40B8AE1B22E0CE0096EF43 /* VideoStreamAppTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4B40B8971B22E0CE0096EF43 /* VideoStreamApp */ = {
+			isa = PBXGroup;
+			children = (
+				4B8B31381B23BFEA0098D2BE /* websockets */,
+				4BDDF0921B231CBB00365E85 /* WS */,
+				4BDDF08A1B230FB900365E85 /* CustomCell.h */,
+				4BDDF08B1B230FB900365E85 /* CustomCell.m */,
+				4BDDF0871B230D3A00365E85 /* UINavigationController+SafePushing.h */,
+				4BDDF0881B230D3A00365E85 /* UINavigationController+SafePushing.m */,
+				4BDDF0861B230D2400365E85 /* Global.h */,
+				4BDDF0821B230A6300365E85 /* Utilities.h */,
+				4BDDF0831B230A6300365E85 /* Utilities.m */,
+				4B40B89C1B22E0CE0096EF43 /* AppDelegate.h */,
+				4B40B89D1B22E0CE0096EF43 /* AppDelegate.m */,
+				4B40B8BE1B22E0FB0096EF43 /* RootController.h */,
+				4B40B8BF1B22E0FB0096EF43 /* RootController.m */,
+				4B40B8C01B22E0FB0096EF43 /* RootController.xib */,
+				4B40B8A51B22E0CE0096EF43 /* Images.xcassets */,
+				4B40B8981B22E0CE0096EF43 /* Supporting Files */,
+				4BDDF0761B2301CF00365E85 /* Splash.xib */,
+				4BDDF08D1B230FE000365E85 /* CameraSourceCell.h */,
+				4BDDF08E1B230FE000365E85 /* CameraSourceCell.m */,
+				4BDDF0901B230FF200365E85 /* CameraSourceCell.xib */,
+			);
+			path = VideoStreamApp;
+			sourceTree = "<group>";
+		};
+		4B40B8981B22E0CE0096EF43 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				4B40B8991B22E0CE0096EF43 /* Info.plist */,
+				4B40B89A1B22E0CE0096EF43 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4B40B8B11B22E0CE0096EF43 /* VideoStreamAppTests */ = {
+			isa = PBXGroup;
+			children = (
+				4B40B8B41B22E0CE0096EF43 /* VideoStreamAppTests.m */,
+				4B40B8B21B22E0CE0096EF43 /* Supporting Files */,
+			);
+			path = VideoStreamAppTests;
+			sourceTree = "<group>";
+		};
+		4B40B8B21B22E0CE0096EF43 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				4BDDF0851B230C7900365E85 /* VideoStreamApp-Prefix.pch */,
+				4B40B8B31B22E0CE0096EF43 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4B8B31381B23BFEA0098D2BE /* websockets */ = {
+			isa = PBXGroup;
+			children = (
+				4B8B31391B23BFEA0098D2BE /* SocketManager.h */,
+				4B8B313A1B23BFEA0098D2BE /* SocketManager.m */,
+				4B8B313B1B23BFEA0098D2BE /* SRWebSocket.h */,
+				4B8B313C1B23BFEA0098D2BE /* SRWebSocket.m */,
+			);
+			path = websockets;
+			sourceTree = "<group>";
+		};
+		4BDDF0921B231CBB00365E85 /* WS */ = {
+			isa = PBXGroup;
+			children = (
+				4BDDF13A1B231EB300365E85 /* OperationResult.h */,
+				4BDDF13B1B231EB300365E85 /* OperationResult.m */,
+				4BDDF1371B231E9A00365E85 /* PostParam.h */,
+				4BDDF1381B231E9A00365E85 /* PostParam.m */,
+				4BDDF1361B231E1400365E85 /* OperationProtocol.h */,
+				4BDDF0951B231CBB00365E85 /* WS.h */,
+				4BDDF0941B231CBB00365E85 /* WS.m */,
+				4BDDF0981B231CBB00365E85 /* JSONModel */,
+				4BDDF0B61B231CBB00365E85 /* Operation.m */,
+				4BDDF0B71B231CBB00365E85 /* Operation.h */,
+				4BDDF0F11B231CBB00365E85 /* UploadOperationResult.m */,
+				4BDDF0F81B231CBB00365E85 /* UploadOperationResult.h */,
+				4BDDF0F91B231CBB00365E85 /* UploadBinaryImageOperation.m */,
+				4BDDF0FA1B231CBB00365E85 /* UploadBinaryImageOperation.h */,
+				4BDDF1001B231CBB00365E85 /* GenericOperation.h */,
+				4BDDF1011B231CBB00365E85 /* GenericOperation.m */,
+				4B71E8FD1B235D28004E2FDA /* CommandItem.h */,
+				4B71E8FE1B235D28004E2FDA /* CommandItem.m */,
+			);
+			path = WS;
+			sourceTree = "<group>";
+		};
+		4BDDF0981B231CBB00365E85 /* JSONModel */ = {
+			isa = PBXGroup;
+			children = (
+				4BDDF0991B231CBB00365E85 /* JSONModel */,
+				4BDDF0A41B231CBB00365E85 /* JSONModelCategories */,
+				4BDDF0A71B231CBB00365E85 /* JSONModelLib.h */,
+				4BDDF0A81B231CBB00365E85 /* JSONModelNetworking */,
+				4BDDF0AF1B231CBB00365E85 /* JSONModelTransformations */,
+			);
+			path = JSONModel;
+			sourceTree = "<group>";
+		};
+		4BDDF0991B231CBB00365E85 /* JSONModel */ = {
+			isa = PBXGroup;
+			children = (
+				4BDDF09A1B231CBB00365E85 /* JSONModel+CoreData.h */,
+				4BDDF09B1B231CBB00365E85 /* JSONModel+CoreData.m */,
+				4BDDF09C1B231CBB00365E85 /* JSONModel.h */,
+				4BDDF09D1B231CBB00365E85 /* JSONModel.m */,
+				4BDDF09E1B231CBB00365E85 /* JSONModelArray.h */,
+				4BDDF09F1B231CBB00365E85 /* JSONModelArray.m */,
+				4BDDF0A01B231CBB00365E85 /* JSONModelClassProperty.h */,
+				4BDDF0A11B231CBB00365E85 /* JSONModelClassProperty.m */,
+				4BDDF0A21B231CBB00365E85 /* JSONModelError.h */,
+				4BDDF0A31B231CBB00365E85 /* JSONModelError.m */,
+			);
+			path = JSONModel;
+			sourceTree = "<group>";
+		};
+		4BDDF0A41B231CBB00365E85 /* JSONModelCategories */ = {
+			isa = PBXGroup;
+			children = (
+				4BDDF0A51B231CBB00365E85 /* NSArray+JSONModel.h */,
+				4BDDF0A61B231CBB00365E85 /* NSArray+JSONModel.m */,
+			);
+			path = JSONModelCategories;
+			sourceTree = "<group>";
+		};
+		4BDDF0A81B231CBB00365E85 /* JSONModelNetworking */ = {
+			isa = PBXGroup;
+			children = (
+				4BDDF0A91B231CBB00365E85 /* JSONAPI.h */,
+				4BDDF0AA1B231CBB00365E85 /* JSONAPI.m */,
+				4BDDF0AB1B231CBB00365E85 /* JSONHTTPClient.h */,
+				4BDDF0AC1B231CBB00365E85 /* JSONHTTPClient.m */,
+				4BDDF0AD1B231CBB00365E85 /* JSONModel+networking.h */,
+				4BDDF0AE1B231CBB00365E85 /* JSONModel+networking.m */,
+			);
+			path = JSONModelNetworking;
+			sourceTree = "<group>";
+		};
+		4BDDF0AF1B231CBB00365E85 /* JSONModelTransformations */ = {
+			isa = PBXGroup;
+			children = (
+				4BDDF0B01B231CBB00365E85 /* JSONKeyMapper.h */,
+				4BDDF0B11B231CBB00365E85 /* JSONKeyMapper.m */,
+				4BDDF0B21B231CBB00365E85 /* JSONValueTransformer.h */,
+				4BDDF0B31B231CBB00365E85 /* JSONValueTransformer.m */,
+			);
+			path = JSONModelTransformations;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4B40B8941B22E0CE0096EF43 /* VideoStreamApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4B40B8B81B22E0CE0096EF43 /* Build configuration list for PBXNativeTarget "VideoStreamApp" */;
+			buildPhases = (
+				4B40B8911B22E0CE0096EF43 /* Sources */,
+				4B40B8921B22E0CE0096EF43 /* Frameworks */,
+				4B40B8931B22E0CE0096EF43 /* Resources */,
+				4B8B313F1B23C0490098D2BE /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = VideoStreamApp;
+			productName = VideoStreamApp;
+			productReference = 4B40B8951B22E0CE0096EF43 /* VideoStreamApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		4B40B8AD1B22E0CE0096EF43 /* VideoStreamAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4B40B8BB1B22E0CE0096EF43 /* Build configuration list for PBXNativeTarget "VideoStreamAppTests" */;
+			buildPhases = (
+				4B40B8AA1B22E0CE0096EF43 /* Sources */,
+				4B40B8AB1B22E0CE0096EF43 /* Frameworks */,
+				4B40B8AC1B22E0CE0096EF43 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4B40B8B01B22E0CE0096EF43 /* PBXTargetDependency */,
+			);
+			name = VideoStreamAppTests;
+			productName = VideoStreamAppTests;
+			productReference = 4B40B8AE1B22E0CE0096EF43 /* VideoStreamAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4B40B88D1B22E0CE0096EF43 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0630;
+				ORGANIZATIONNAME = "Maxim Guzun";
+				TargetAttributes = {
+					4B40B8941B22E0CE0096EF43 = {
+						CreatedOnToolsVersion = 6.3;
+					};
+					4B40B8AD1B22E0CE0096EF43 = {
+						CreatedOnToolsVersion = 6.3;
+						TestTargetID = 4B40B8941B22E0CE0096EF43;
+					};
+				};
+			};
+			buildConfigurationList = 4B40B8901B22E0CE0096EF43 /* Build configuration list for PBXProject "VideoStreamApp" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 4B40B88C1B22E0CE0096EF43;
+			productRefGroup = 4B40B8961B22E0CE0096EF43 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4B40B8941B22E0CE0096EF43 /* VideoStreamApp */,
+				4B40B8AD1B22E0CE0096EF43 /* VideoStreamAppTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4B40B8931B22E0CE0096EF43 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4B40B8C21B22E0FB0096EF43 /* RootController.xib in Resources */,
+				4B40B8A61B22E0CE0096EF43 /* Images.xcassets in Resources */,
+				4BDDF0771B2301CF00365E85 /* Splash.xib in Resources */,
+				4BD02CF11B23A2E3009C9D60 /* Settings.bundle in Resources */,
+				4BDDF0911B230FF200365E85 /* CameraSourceCell.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4B40B8AC1B22E0CE0096EF43 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4B8B313F1B23C0490098D2BE /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "find . -name \"._*\" -print0 | xargs -0 rm -rf";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4B40B8911B22E0CE0096EF43 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4B40B8C11B22E0FB0096EF43 /* RootController.m in Sources */,
+				4BDDF1021B231CBB00365E85 /* WS.m in Sources */,
+				4B71E8FF1B235D28004E2FDA /* CommandItem.m in Sources */,
+				4BDDF10B1B231CBB00365E85 /* JSONModel+networking.m in Sources */,
+				4B8B313E1B23BFEA0098D2BE /* SRWebSocket.m in Sources */,
+				4BDDF08F1B230FE000365E85 /* CameraSourceCell.m in Sources */,
+				4B40B89E1B22E0CE0096EF43 /* AppDelegate.m in Sources */,
+				4BDDF1391B231E9A00365E85 /* PostParam.m in Sources */,
+				4BDDF10A1B231CBB00365E85 /* JSONHTTPClient.m in Sources */,
+				4BDDF08C1B230FB900365E85 /* CustomCell.m in Sources */,
+				4BDDF1061B231CBB00365E85 /* JSONModelClassProperty.m in Sources */,
+				4B8B313D1B23BFEA0098D2BE /* SocketManager.m in Sources */,
+				4BDDF10D1B231CBB00365E85 /* JSONValueTransformer.m in Sources */,
+				4BDDF1031B231CBB00365E85 /* JSONModel+CoreData.m in Sources */,
+				4BDDF0841B230A6300365E85 /* Utilities.m in Sources */,
+				4BDDF10F1B231CBB00365E85 /* Operation.m in Sources */,
+				4BDDF1091B231CBB00365E85 /* JSONAPI.m in Sources */,
+				4BDDF1081B231CBB00365E85 /* NSArray+JSONModel.m in Sources */,
+				4BDDF10C1B231CBB00365E85 /* JSONKeyMapper.m in Sources */,
+				4B40B89B1B22E0CE0096EF43 /* main.m in Sources */,
+				4BDDF0891B230D3A00365E85 /* UINavigationController+SafePushing.m in Sources */,
+				4BDDF1351B231CBB00365E85 /* GenericOperation.m in Sources */,
+				4BDDF1071B231CBB00365E85 /* JSONModelError.m in Sources */,
+				4BDDF1041B231CBB00365E85 /* JSONModel.m in Sources */,
+				4BDDF12F1B231CBB00365E85 /* UploadOperationResult.m in Sources */,
+				4BDDF13C1B231EB300365E85 /* OperationResult.m in Sources */,
+				4BDDF1051B231CBB00365E85 /* JSONModelArray.m in Sources */,
+				4BDDF1321B231CBB00365E85 /* UploadBinaryImageOperation.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4B40B8AA1B22E0CE0096EF43 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4B40B8B51B22E0CE0096EF43 /* VideoStreamAppTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4B40B8B01B22E0CE0096EF43 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4B40B8941B22E0CE0096EF43 /* VideoStreamApp */;
+			targetProxy = 4B40B8AF1B22E0CE0096EF43 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		4B40B8B61B22E0CE0096EF43 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		4B40B8B71B22E0CE0096EF43 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4B40B8B91B22E0CE0096EF43 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Igor Iounatanov (2LYYYZ4269)";
+				GCC_PREFIX_HEADER = "VideoStreamApp/VideoStreamApp-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+				);
+				INFOPLIST_FILE = VideoStreamApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/videocore";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "9690e54d-c51c-4214-9603-ef80a35a2313";
+				REZ_SEARCH_PATHS = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "";
+			};
+			name = Debug;
+		};
+		4B40B8BA1B22E0CE0096EF43 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Igor Iounatanov (2LYYYZ4269)";
+				GCC_PREFIX_HEADER = "VideoStreamApp/VideoStreamApp-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+				);
+				INFOPLIST_FILE = VideoStreamApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/videocore";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "9690e54d-c51c-4214-9603-ef80a35a2313";
+				REZ_SEARCH_PATHS = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "";
+			};
+			name = Release;
+		};
+		4B40B8BC1B22E0CE0096EF43 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = VideoStreamAppTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VideoStreamApp.app/VideoStreamApp";
+			};
+			name = Debug;
+		};
+		4B40B8BD1B22E0CE0096EF43 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = VideoStreamAppTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VideoStreamApp.app/VideoStreamApp";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4B40B8901B22E0CE0096EF43 /* Build configuration list for PBXProject "VideoStreamApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4B40B8B61B22E0CE0096EF43 /* Debug */,
+				4B40B8B71B22E0CE0096EF43 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4B40B8B81B22E0CE0096EF43 /* Build configuration list for PBXNativeTarget "VideoStreamApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4B40B8B91B22E0CE0096EF43 /* Debug */,
+				4B40B8BA1B22E0CE0096EF43 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4B40B8BB1B22E0CE0096EF43 /* Build configuration list for PBXNativeTarget "VideoStreamAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4B40B8BC1B22E0CE0096EF43 /* Debug */,
+				4B40B8BD1B22E0CE0096EF43 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4B40B88D1B22E0CE0096EF43 /* Project object */;
+}

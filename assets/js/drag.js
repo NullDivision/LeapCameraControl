@@ -50,16 +50,20 @@ Leap.loop(options, function (frame) {
             eventsHistory.push(50);
         }
         
-        if(distance > 100 && eventsHistory.indexOf(50) == -1) {
-            eventsHistory.push(50);
+        if(distance > 100 && eventsHistory.indexOf(50) != -1) {
+            eventsHistory.push(100);
         }
         
-        if(eventsHistory[0]> eventsHistory[1]){LayoutManager.zoomIn(socket);
-        } else {
-            LayoutManager.zoomOut(socket);
-        }
+        
 
-        if(eventsHistory.length >= 2)eventsHistory = [];
+        if(eventsHistory.length >= 2)setTimeout(function(){
+            
+            if(eventsHistory[0]> eventsHistory[1]){
+                LayoutManager.zoomIn(socket);
+            } else {
+                LayoutManager.zoomOut(socket);
+            }
+            eventsHistory = []},2000);
     }
     
     for (var i = 0, len = frame.hands.length; i < len; i++) {
