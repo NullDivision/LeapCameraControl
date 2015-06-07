@@ -22,6 +22,7 @@ function computeZ(axisZ) {
     }
     return axisZ;
 }
+var TT = null;
 var eventsHistory = [];
 var marginTop = 0;
 var rightHand;
@@ -31,39 +32,46 @@ Leap.loop(options, function (frame) {
     if(frame.hands.length == 0){
         LayoutManager.release(x, y, false);
     }
-    if(frame.hands.length==2) {
+    if(frame.hands.length==2 && eventsHistory.length<2) {
         
         x1 = frame.hands[0].palmPosition[0];
         x2 = frame.hands[1].palmPosition[0];
         distance = getDistance(x1, x2);
-        if(distance > 100 && eventsHistory.indexOf(100) == -1) {
+        console.log(distance);
+        if(eventsHistory.length< 2 && distance > 250 && eventsHistory.indexOf(100) == -1) {
             eventsHistory.push(100);
         }
         
-        if(distance < 50 && eventsHistory.indexOf(100) != -1) {
+        if(eventsHistory.length< 2 && distance < 120 && eventsHistory.indexOf(100) != -1) {
             eventsHistory.push(50);
         }
         
         
         
-        if(distance < 50 && eventsHistory.indexOf(50) == -1) {
+        if(eventsHistory.length< 2 && distance < 120 && eventsHistory.indexOf(50) == -1) {
             eventsHistory.push(50);
         }
         
-        if(distance > 100 && eventsHistory.indexOf(50) != -1) {
+        if(eventsHistory.length < 2 && distance > 250 && eventsHistory.indexOf(50) != -1) {
             eventsHistory.push(100);
         }
-        
+        console.log(eventsHistory);
         
 
-        if(eventsHistory.length >= 2)setTimeout(function(){
+        if(eventsHistory.length >= 2)
+        {
+            if(TT){
+                clearTimeout(TT);
+            }
+            TT = setTimeout(function(){
             
             if(eventsHistory[0]> eventsHistory[1]){
-                LayoutManager.zoomIn(socket);
-            } else {
                 LayoutManager.zoomOut(socket);
+            } else {
+                LayoutManager.zoomIn(socket);
             }
-            eventsHistory = []},2000);
+            eventsHistory = []},100);
+        }
     }
     
     for (var i = 0, len = frame.hands.length; i < len; i++) {
