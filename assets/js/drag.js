@@ -37,7 +37,6 @@ Leap.loop(options, function (frame) {
         x1 = frame.hands[0].palmPosition[0];
         x2 = frame.hands[1].palmPosition[0];
         distance = getDistance(x1, x2);
-        console.log(distance);
         if(eventsHistory.length< 2 && distance > 250 && eventsHistory.indexOf(100) == -1) {
             eventsHistory.push(100);
         }
@@ -55,8 +54,6 @@ Leap.loop(options, function (frame) {
         if(eventsHistory.length < 2 && distance > 250 && eventsHistory.indexOf(50) != -1) {
             eventsHistory.push(100);
         }
-        console.log(eventsHistory);
-        
 
         if(eventsHistory.length >= 2)
         {
@@ -106,12 +103,14 @@ Leap.loop(options, function (frame) {
               LayoutManager.tap(x, y);
           case "swipe":
               var isHorizontal = Math.abs(gesture.direction[0]) > Math.abs(gesture.direction[1]);
-              if(!isHorizontal) {
-                if(gesture.direction[1] > 0){
-                    LayoutManager.zoomIn(x, y, socket);
-                } else {
-                    LayoutManager.zoomOut(x, y, socket);
-                }  
+              if (frame.hands.length == 1) {
+                if(isHorizontal) {
+                  if(gesture.direction[0] > 0){
+                      LayoutManager.flashOn();
+                  } else {
+                      LayoutManager.flashOff();
+                  }  
+                }
               }
               break;
         }
@@ -136,7 +135,7 @@ function getDistance(x1, x2){
 //STREAMING
 
 function init() {
-  var host = "ws://10.0.0.35:9000/echobot"; // SET THIS TO YOUR SERVER
+  var host = "ws://192.168.222.31:443/echobot"; // SET THIS TO YOUR SERVER
   try {
       socket = new WebSocket(host);
       console.log('WebSocket - status '+socket.readyState);
