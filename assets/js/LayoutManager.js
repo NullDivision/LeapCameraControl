@@ -1,14 +1,12 @@
-'use strict';
-
-/*global window, jQuery */
+/*global window, jQuery, send */
 (function (scope, $) {
     'use strict';
+
     scope.LayoutManager = (function () {
-        var layoutManager = {
+        var t, layoutManager = {
             drag: false,
-            draggable: null,
+            draggable: null
         };
-        var t;
 
         layoutManager.move = function (posX, posY) {
             if (!this.drag) {
@@ -53,10 +51,11 @@
                 container    = $(window.document.elementsFromPoint(posX, posY)).filter('.feed-column');
 
             $('.hand').addClass('hidden');
-            if(framePresence)
+            if (framePresence) {
                 $('.open-hand').show();
-            else
+            } else {
                 $('.open-hand').hide();
+            }
 
             if (this.draggable) {
                 if ('main-camera' === container.attr('id')) {
@@ -96,38 +95,42 @@
             return true;
         };
 
-        layoutManager.zoomIn = function() {
-            console.log("blin");
+        layoutManager.zoomIn = function () {
             var element = $('#main-camera .feed-img');
-            if(t != null) { clearTimeout(t);}
-            t = setTimeout(function(){
-                send('{"cmd":1, "usr":'+$(element).attr('usr')+"}");}
-            , 500);
+            if (t !== null) { scope.clearTimeout(t); }
+            t = scope.setTimeout(function () {
+                send('{"cmd":1, "usr":' + $(element).attr('usr') + "}");
+            }, 500);
         };
 
-        layoutManager.zoomOut = function() {
-            console.log("out");
+        layoutManager.zoomOut = function () {
             var element = $('#main-camera .feed-img');
-            if(t != null) { clearTimeout(t);}
-            t = setTimeout(function(){
-                send('{"cmd":2, "usr":'+$(element).attr('usr')+"}");}
-            , 500);
+            if (t !== null) { scope.clearTimeout(t); }
+            t = scope.setTimeout(function () {
+                send('{"cmd":2, "usr":' + $(element).attr('usr') + "}");
+            }, 500);
         };
 
-        layoutManager.flashOn = function(){
+        layoutManager.flashOn = function () {
             var element = $('#main-camera .feed-img');
-            if(t != null) { clearTimeout(t);}
-            t = setTimeout(function(){
-                send('{"cmd":3, "usr":'+$(element).attr('usr')+"}");}
-            , 500);
-        }
-        layoutManager.flashOff = function(){
+            if (t !== null) { scope.clearTimeout(t); }
+            t = scope.setTimeout(function () {
+                send('{"cmd":3, "usr":' + $(element).attr('usr') + "}");
+            }, 500);
+        };
+
+        layoutManager.flashOff = function () {
             var element = $('#main-camera .feed-img');
-            if(t != null) { clearTimeout(t);}
-            t = setTimeout(function(){
-                send('{"cmd":4, "usr":'+$(element).attr('usr')+"}");}
-            , 500);
-        }
+
+            if (t !== null) {
+                scope.clearTimeout(t);
+            }
+
+            t = scope.setTimeout(function () {
+                send('{"cmd":4, "usr":' + $(element).attr('usr') + "}");
+            }, 500);
+        };
+
         return layoutManager;
     }());
 }(window, jQuery));
