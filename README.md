@@ -11,5 +11,7 @@ This tool allows a user to control multiple input fields with simple but effecti
 ### Dependencies
 You will need `NPM` and `Grunt-cli` in order to build the project.
 
+Additionally the package uses the `Compass` Ruby gem for CSS3 compliance. As such, you will need it for the SASS build process.
+
 ### Installation
 Just run `npm install`. This will install any dependencies and compile files for use on your server.
