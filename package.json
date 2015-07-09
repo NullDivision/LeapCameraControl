@@ -33,6 +33,5 @@
     "grunt-contrib-watch": "^0.6.1",
     "grunt-jslint": "^1.1.14",
     "jshint-stylish": "^2.0.1"
-  },
-  "dependencies": {}
+  }
 }

@@ -27,11 +27,16 @@ module.exports = function (grunt) {
         },
         watch: {
             scripts: {
-                files: ['assets/**/*.js', 'spec/**/*.js', 'index.jade', 'src/**/*.scss'],
-                tasks: ['jade', 'sass', 'jshint', 'jslint', 'jasmine'],
-                options: {
-                    spawn: false
-                }
+                files: ['assets/**/*.js', 'spec/**/*.js'],
+                tasks: ['jshint', 'jslint', 'jasmine']
+            },
+            styles: {
+                files: ['src/**/*.scss'],
+                tasks: ['sass']
+            },
+            views: {
+                files: ['index.jade'],
+                tasks: ['jade']
             }
         },
         jasmine: {
@@ -69,4 +74,6 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-jslint');
+
+    grunt.registerTask('default', ['jade', 'sass']);
 };

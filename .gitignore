@@ -3,4 +3,5 @@
 .sass-cache/
 _SpecRunner.html
 index.html
+dist/
 node_modules/
