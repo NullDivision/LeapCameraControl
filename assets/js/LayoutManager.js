@@ -1,136 +1,134 @@
-/*global window, jQuery, send */
-(function (scope, $) {
+/*global send */
+define('LayoutManager', ['jQuery'], function ($) {
     'use strict';
 
-    scope.LayoutManager = (function () {
-        var t, layoutManager = {
-            drag: false,
-            draggable: null
-        };
+    var t, layoutManager = {
+        drag: false,
+        draggable: null
+    };
 
-        layoutManager.move = function (posX, posY) {
-            if (!this.drag) {
-                return false;
-            }
+    layoutManager.move = function (posX, posY) {
+        if (!this.drag) {
+            return false;
+        }
 
-            $('.hand').css({top: posY + 'px', left: posX + 'px'});
-            this.draggable.css({top: posY + 'px', left: posX + 'px'});
-        };
+        $('.hand').css({top: posY + 'px', left: posX + 'px'});
+        this.draggable.css({top: posY + 'px', left: posX + 'px'});
+    };
 
-        layoutManager.grab = function (posX, posY) {
-            var i,
-                elements = window.document.elementsFromPoint(posX, posY),
-                interactables = ['.feed-container'];
+    layoutManager.grab = function (posX, posY) {
+        var i,
+            elements = window.document.elementsFromPoint(posX, posY),
+            interactables = ['.feed-container'];
 
-            if (this.drag) {
-                return false;
-            }
+        if (this.drag) {
+            return false;
+        }
 
-            for (i = interactables.length - 1; i >= 0; i -= 1) {
-                this.draggable = $(elements).filter(interactables[i]);
-                if (this.draggable) {
-                    break;
-                }
-            }
-
+        for (i = interactables.length - 1; i >= 0; i -= 1) {
+            this.draggable = $(elements).filter(interactables[i]);
             if (this.draggable) {
-                this.draggable.addClass('dragging').appendTo('#page');
-                this.drag = true;
-
-                $('.open-hand').hide();
-                $('.hand').removeClass('hidden');
+                break;
             }
+        }
 
-            this.move(posX, posY);
+        if (this.draggable) {
+            this.draggable.addClass('dragging').appendTo('#page');
+            this.drag = true;
 
-            return true;
-        };
+            $('.open-hand').hide();
+            $('.hand').removeClass('hidden');
+        }
 
-        layoutManager.release = function (posX, posY, framePresence) {
-            var mainOccupant = $('#main-camera .feed-container'),
-                container    = $(window.document.elementsFromPoint(posX, posY)).filter('.feed-column');
+        this.move(posX, posY);
 
-            $('.hand').addClass('hidden');
-            if (framePresence) {
-                $('.open-hand').show();
+        return true;
+    };
+
+    layoutManager.release = function (posX, posY, framePresence) {
+        var mainOccupant = $('#main-camera .feed-container'),
+            container    = $(window.document.elementsFromPoint(posX, posY)).filter('.feed-column');
+
+        $('.hand').addClass('hidden');
+        if (framePresence) {
+            $('.open-hand').show();
+        } else {
+            $('.open-hand').hide();
+        }
+
+        if (this.draggable) {
+            if ('main-camera' === container.attr('id')) {
+                if (mainOccupant.length > 0) {
+                    mainOccupant.prependTo('#camera-feeds');
+                }
+
+                this.draggable.appendTo(container);
             } else {
-                $('.open-hand').hide();
+                this.draggable.prependTo('#camera-feeds');
             }
 
-            if (this.draggable) {
-                if ('main-camera' === container.attr('id')) {
-                    if (mainOccupant.length > 0) {
-                        mainOccupant.prependTo('#camera-feeds');
-                    }
+            this.draggable.removeClass('dragging').removeAttr('style');
+        }
 
-                    this.draggable.appendTo(container);
-                } else {
-                    this.draggable.prependTo('#camera-feeds');
-                }
+        this.drag = false;
+        this.draggable = null;
 
-                this.draggable.removeClass('dragging').removeAttr('style');
-            }
+        return true;
+    };
 
-            this.drag = false;
-            this.draggable = null;
+    layoutManager.pull = function (posZ) {
+        var scale       = 1,
+            scaleLimit  = 4.1,
+            adjustment  = parseFloat(0.1),
+            posZReal    = posZ + 1,
+            posZPercent = posZReal * 100 / 2;
 
-            return true;
-        };
+        if (!this.draggable) {
+            return false;
+        }
 
-        layoutManager.pull = function (posZ) {
-            var scale       = 1,
-                scaleLimit  = 4.1,
-                adjustment  = parseFloat(0.1),
-                posZReal    = posZ + 1,
-                posZPercent = posZReal * 100 / 2;
+        scale = (posZPercent * scaleLimit / 100) + adjustment;
 
-            if (!this.draggable) {
-                return false;
-            }
+        this.draggable.css({transform: 'scale(' + scale + ')'});
 
-            scale = (posZPercent * scaleLimit / 100) + adjustment;
+        return true;
+    };
 
-            this.draggable.css({transform: 'scale(' + scale + ')'});
+    layoutManager.zoomIn = function () {
+        var element = $('#main-camera .feed-img');
+        if (t !== null) { clearTimeout(t); }
+        t = setTimeout(function () {
+            send('{"cmd":1, "usr":' + $(element).attr('usr') + "}");
+        }, 500);
+    };
 
-            return true;
-        };
+    layoutManager.zoomOut = function () {
+        var element = $('#main-camera .feed-img');
+        if (t !== null) { clearTimeout(t); }
+        t = setTimeout(function () {
+            send('{"cmd":2, "usr":' + $(element).attr('usr') + "}");
+        }, 500);
+    };
 
-        layoutManager.zoomIn = function () {
-            var element = $('#main-camera .feed-img');
-            if (t !== null) { scope.clearTimeout(t); }
-            t = scope.setTimeout(function () {
-                send('{"cmd":1, "usr":' + $(element).attr('usr') + "}");
-            }, 500);
-        };
+    layoutManager.flashOn = function () {
+        var element = $('#main-camera .feed-img');
+        if (t !== null) { clearTimeout(t); }
+        t = setTimeout(function () {
+            send('{"cmd":3, "usr":' + $(element).attr('usr') + "}");
+        }, 500);
+    };
 
-        layoutManager.zoomOut = function () {
-            var element = $('#main-camera .feed-img');
-            if (t !== null) { scope.clearTimeout(t); }
-            t = scope.setTimeout(function () {
-                send('{"cmd":2, "usr":' + $(element).attr('usr') + "}");
-            }, 500);
-        };
+    layoutManager.flashOff = function () {
+        var element = $('#main-camera .feed-img');
 
-        layoutManager.flashOn = function () {
-            var element = $('#main-camera .feed-img');
-            if (t !== null) { scope.clearTimeout(t); }
-            t = scope.setTimeout(function () {
-                send('{"cmd":3, "usr":' + $(element).attr('usr') + "}");
-            }, 500);
-        };
+        if (t !== null) {
+            clearTimeout(t);
+        }
 
-        layoutManager.flashOff = function () {
-            var element = $('#main-camera .feed-img');
+        t = setTimeout(function () {
+            send('{"cmd":4, "usr":' + $(element).attr('usr') + "}");
+        }, 500);
+    };
 
-            if (t !== null) {
-                scope.clearTimeout(t);
-            }
-
-            t = scope.setTimeout(function () {
-                send('{"cmd":4, "usr":' + $(element).attr('usr') + "}");
-            }, 500);
-        };
-
-        return layoutManager;
-    }());
-}(window, jQuery));
+    return layoutManager;
+});
