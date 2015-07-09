@@ -4,7 +4,8 @@
   "description": "Control system for cameras using Leap Motion module",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "echo \"NPM install complete! Running grunt installer...\" && grunt"
   },
   "repository": {
     "type": "git",

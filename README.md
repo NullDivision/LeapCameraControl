@@ -9,4 +9,4 @@ The end.
 This tool allows a user to control multiple input fields with simple but effective hand gestures using a Leap Motion controller.
 
 ### Installation
-Just run `npm install` and then `grunt`.
+Just run `npm install`. This will install any dependencies and compile files for use on your server.
