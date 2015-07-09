@@ -1,4 +1,6 @@
 .grunt/
 .idea/*/nbproject/private/
+.sass-cache/
 _SpecRunner.html
+index.html
 node_modules/

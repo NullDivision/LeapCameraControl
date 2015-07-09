@@ -1,0 +1,62 @@
+@import "bootstrap/normalize";
+@import "bootstrap/variables";
+@import "bootstrap/mixins/clearfix";
+@import "bootstrap/mixins/grid";
+@import "bootstrap/mixins/grid-framework";
+@import "bootstrap/grid";
+@import "bootstrap/mixins/text-emphasis";
+@import "bootstrap/mixins/background-variant";
+@import "bootstrap/mixins/text-overflow";
+@import "bootstrap/type";
+@import "bootstrap/mixins/center-block";
+@import "bootstrap/mixins/hide-text";
+@import "bootstrap/utilities";
+@import "bootstrap/mixins/vendor-prefixes";
+@import "bootstrap/mixins/tab-focus";
+@import "bootstrap/mixins/image";
+@import "bootstrap/scaffolding";
+
+@import "compass/css3/box-shadow";
+
+body, html {
+    background: {
+        color: #191919;
+    }
+    height: 100vh;
+    overflow: hidden;
+}
+
+.row {
+    section {
+        height: 100%;
+    }
+}
+
+.fingers {
+    height: 100%;
+    width: 100%;
+
+    li {
+        position: absolute;
+        list-style: none;
+    }
+}
+
+#page {
+    height: 100%;
+    width: 100%;
+
+    .row {
+        height: 100%;
+    }
+}
+
+#main-camera {
+    background: {
+        color: #0a0909;
+    }
+}
+
+#camera-feeds {
+    @include box-shadow(#000 -3px 0 8px);
+}
