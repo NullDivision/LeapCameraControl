@@ -15,3 +15,9 @@ Additionally the package uses the `Compass` Ruby gem for CSS3 compliance. As suc
 
 ### Installation
 Just run `npm install`. This will install any dependencies and compile files for use on your server.
+
+### TODO
+- Node.JS driven websocket server
+- server integrated clients for photo and video streaming
+- BDD
+- notifications

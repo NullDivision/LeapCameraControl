@@ -26,9 +26,13 @@ module.exports = function (grunt) {
             }
         },
         watch: {
-            scripts: {
-                files: ['assets/**/*.js', 'spec/**/*.js'],
+            tests: {
+                files: ['spec/**/*.js'],
                 tasks: ['jshint', 'jslint', 'jasmine']
+            },
+            scripts: {
+                files: ['src/client/**/*.js', 'assets/**/*.js'],
+                tasks: ['jshint', 'jslint', 'uglify']
             },
             styles: {
                 files: ['src/**/*.scss'],
@@ -65,6 +69,16 @@ module.exports = function (grunt) {
                     compass: true
                 }
             }
+        },
+        uglify: {
+            vendors: {
+                files: {
+                    'dist/assets/js/vendor/require.js': 'node_modules/requirejs/require.js'
+                }
+            },
+            scripts: {
+                files: grunt.file.expandMapping('src/client/**/*.js', 'dist/assets/js/', {flatten: true})
+            }
         }
     });
 
@@ -72,8 +86,9 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-jasmine');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-sass');
+    grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-jslint');
 
-    grunt.registerTask('default', ['jade', 'sass']);
+    grunt.registerTask('default', ['jade', 'sass', 'uglify']);
 };

@@ -1,6 +1,6 @@
 require(
-    ['LayoutManager', 'Leap', 'jQuery', 'WebSocket'],
-    function (LayoutManager, Leap, $, WebSocket) {
+    ['LayoutManager', 'Leap', 'jQuery', 'WebSocket', 'window'],
+    function (LayoutManager, Leap, $, WebSocket, scope) {
         'use strict';
 
         var socket,
@@ -187,7 +187,7 @@ require(
             }
         }
 
-        function send(msg) {
+        scope.send = function (msg) {
             if (!msg) {
                 alert("Message can not be empty");
                 return;
@@ -198,7 +198,7 @@ require(
             } catch (ex) {
                 console.log(ex);
             }
-        }
+        };
 
         $(document).ready(function () {
             init();
