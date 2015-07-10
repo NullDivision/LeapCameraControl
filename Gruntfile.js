@@ -31,7 +31,7 @@ module.exports = function (grunt) {
                 tasks: ['jshint', 'jslint', 'jasmine']
             },
             scripts: {
-                files: ['src/client/**/*.js', 'assets/**/*.js'],
+                files: ['src/client/**/*.js', 'assets/**/*.js', 'index.js'],
                 tasks: ['jshint', 'jslint', 'uglify']
             },
             styles: {

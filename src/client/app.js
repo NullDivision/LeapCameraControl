@@ -7,4 +7,7 @@ require.config({
 
 require(['LayoutManager', 'SockJS'], function (LayoutManager, SockJS) {
     var socket = new SockJS('http://localhost:9000/');
+    socket.onopen = function () {
+        console.log('open');
+    };
 });
