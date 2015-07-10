@@ -27,7 +27,7 @@ module.exports = function (grunt) {
         },
         watch: {
             tests: {
-                files: ['spec/**/*.js'],
+                files: ['src/client/**/*.js', 'spec/**/*.js'],
                 tasks: ['jshint', 'jslint', 'jasmine']
             },
             scripts: {
@@ -45,9 +45,15 @@ module.exports = function (grunt) {
         },
         jasmine: {
             tests: {
-                src: 'assets/js/**/*.js',
+                src: 'assets/js/**/*.js, src/client/**/*.js',
                 options: {
-                    specs: 'spec/*Spec.js'
+                    specs: 'spec/*Spec.js',
+                    template: require('grunt-template-jasmine-requirejs'),
+                    templateOptions: {
+                        requireConfig: {
+                            baseUrl: 'dist/assets/js'
+                        }
+                    }
                 }
             }
         },
@@ -79,6 +85,16 @@ module.exports = function (grunt) {
             scripts: {
                 files: grunt.file.expandMapping('src/client/**/*.js', 'dist/assets/js/', {flatten: true})
             }
+        },
+        lodash: {
+            build: {
+                dest: 'dist/assets/js/vendor/lodash.js',
+                options: {
+                    modifier: 'modern',
+                    exports: ['amd'],
+                    include: ['isEmpty']
+                }
+            }
         }
     });
 
@@ -89,6 +105,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-jslint');
+    grunt.loadNpmTasks('grunt-lodash');
 
-    grunt.registerTask('default', ['jade', 'sass', 'uglify']);
+    grunt.registerTask('default', ['jade', 'sass', 'lodash', 'uglify']);
 };

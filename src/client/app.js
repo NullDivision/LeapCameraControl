@@ -2,4 +2,4 @@ require.config({
     baseUrl: 'dist/assets/js'
 });
 
-require(['LayoutManager']);
+require(['LayoutManager', 'SocketProxy']);
