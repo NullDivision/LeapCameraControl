@@ -1,0 +1,86 @@
+@import 'base';
+
+@import 'bootstrap/mixins/clearfix';
+@import 'bootstrap/mixins/grid';
+@import 'bootstrap/mixins/forms';
+@import 'bootstrap/forms';
+@import 'bootstrap/mixins/opacity';
+@import 'bootstrap/mixins/buttons';
+@import 'bootstrap/buttons';
+
+@import 'compass/css3/box-shadow';
+@import 'compass/css3/text-shadow';
+@import 'compass/css3/transition';
+
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:600);
+
+$header-height: 70px;
+
+header {
+    height: $header-height;
+    @include box-shadow(#000 0 3px 8px);
+    width: 100%;
+
+    nav, ul, li {
+        height: 100%;
+    }
+
+    nav {
+        width: 100%;
+        display: table;
+        font: {
+            family: 'Open Sans';
+            weight: 600;
+            size: 24px;
+        }
+
+        > li {
+            background-color: #444;
+            border-bottom: 1px solid #555;
+            display: table-cell;
+            vertical-align: middle;
+            text-align: center;
+        }
+    }
+
+    ul {
+        margin: 0;
+        padding: 0;
+    }
+
+    a {
+        @include text-shadow(#555 -1px -1px 0);
+        color: #191919;
+
+        &:hover {
+            @include text-shadow(#555 1px 1px 0);
+            color: #191919;
+            text-decoration: none;
+            @include transition-property(text-shadow);
+            @include transition-duration(80ms);
+        }
+    }
+}
+
+#main {
+    height: calc(100% - #{$header-height});
+    position: relative;
+}
+
+.form-box {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    background-color: #444;
+    padding: 1em;
+    @include box-shadow(#000 0 3px 8px);
+    border: 2px solid #555;
+    border-radius: 2px;
+    transform: translate(-50%, -50%);
+
+    .form-control, .btn {
+        background-color: #333;
+        border-color: #666;
+        color: #ccc
+    }
+}

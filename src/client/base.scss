@@ -1,0 +1,15 @@
+@import 'bootstrap/normalize';
+@import 'bootstrap/variables';
+@import 'bootstrap/mixins/image';
+@import 'bootstrap/mixins/tab-focus';
+@import 'bootstrap/mixins/vendor-prefixes';
+@import 'bootstrap/scaffolding';
+
+body, html {
+    height: 100vh;
+    overflow: hidden;
+
+    background: {
+        color: #191919;
+    }
+}

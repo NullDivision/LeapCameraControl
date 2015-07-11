@@ -6,8 +6,15 @@ require.config({
 });
 
 require(['LayoutManager', 'SockJS'], function (LayoutManager, SockJS) {
-    var socket = new SockJS('http://localhost:9000/');
-    socket.onopen = function () {
-        console.log('open');
+    var socketConnect = function () {
+        console.log('Attempting connection');
+
+        var socket = new SockJS('http://localhost:9000/');
+
+        socket.onopen = function () {
+            console.log('Connection established');
+        };
     };
+
+    socketConnect();
 });

@@ -67,7 +67,8 @@ module.exports = function (grunt) {
         sass: {
             compile: {
                 files: {
-                    'dist/assets/css/main.css': 'src/client/main.scss'
+                    'dist/assets/css/main.css': 'src/client/main.scss',
+                    'dist/assets/css/registry.css': 'src/client/registry.scss'
                 },
                 options: {
                     loadPath: ['node_modules/bootstrap-sass/assets/stylesheets'],
@@ -106,6 +107,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-jslint');
     grunt.loadNpmTasks('grunt-lodash');
+    grunt.loadNpmTasks('grunt-notify');
 
     grunt.registerTask('default', ['jade', 'sass', 'lodash', 'uglify']);
 };

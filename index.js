@@ -1,6 +1,8 @@
 // get web framework
-var app = require('express')();
+var express = require('express');
+var app = express();
 app.set('view engine', 'jade');
+app.use('/dist', express.static('dist'));
 
 // start services
 var server = require('http').createServer(app);
@@ -17,6 +19,10 @@ echo.on('connection', function(conn) {
 app.get('/', function (request, response) {
     console.log('Registry page');
     response.render('registry');
+});
+app.get('/add-image', function (request, response) {
+    console.log('Registry page');
+    response.render('add_image');
 });
 
 // chat server init

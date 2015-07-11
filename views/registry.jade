@@ -3,7 +3,13 @@ html
     head
         title='Leap Camera Control :: Feed registry'
 
+        link(href='/dist/assets/css/registry.css', rel='stylesheet')
+
     body
         header(rel='page-header')
+            nav
+                li
+                    a(href='add-image') Add image
 
-        section(rel='main')
+        section#main(rel='main')
+            block content
