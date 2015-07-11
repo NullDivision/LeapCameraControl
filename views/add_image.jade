@@ -2,8 +2,9 @@ extends ./registry.jade
 
 block content
     .form-box
-        form
+        form(method='post')
+            p Add a photo url to the list of feeds
             .form-group
-                input(class='form-control')
+                input(name='url', class='form-control')
             .form-group
                 button(type='submit', class='btn btn-default btn-sm') Submit

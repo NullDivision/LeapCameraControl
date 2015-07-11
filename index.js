@@ -1,14 +1,17 @@
 // get web framework
-var express = require('express');
+var express    = require('express'),
+    bodyParser = require('body-parser'),
+    sockjs     = require('sockjs');
 var app = express();
+
 app.set('view engine', 'jade');
 app.use('/dist', express.static('dist'));
+app.use('/old_dist', express.static('assets'));
 
 // start services
 var server = require('http').createServer(app);
-var sockjs = require('sockjs');
 
-var echo = sockjs.createServer({ sockjs_url: 'http://cdn.jsdelivr.net/sockjs/0.3.4/sockjs.min.js' });
+var echo = sockjs.createServer();
 echo.on('connection', function(conn) {
     conn.on('data', function(message) {
         conn.write(message);
@@ -17,14 +20,21 @@ echo.on('connection', function(conn) {
 });
 
 app.get('/', function (request, response) {
-    console.log('Registry page');
+    response.render('index.jade');
+});
+app.get('/registry', function (request, response) {
     response.render('registry');
 });
 app.get('/add-image', function (request, response) {
-    console.log('Registry page');
+    response.render('add_image');
+});
+app.post('/add-image', bodyParser.json(), function (request, response) {
+    // emit new image to clients
+    echo.emit(JSON.stringify({action: 'push', content: {type: 'text/plain', data: request.body.url}}))
+
     response.render('add_image');
 });
 
 // chat server init
-echo.installHandlers(server, {prefix: 'socks/'});
-server.listen(9000, '0.0.0.0');
+server.listen(9000);
+echo.installHandlers(server, {prefix: '/ws'});

@@ -1,0 +1,20 @@
+doctype html
+html
+    head
+        title='Leap Camera Control'
+
+        link(href='dist/assets/css/main.css', rel='stylesheet')
+    body
+        #page.container
+            .row
+                section#main-camera.col-md-8.feed-column(rel='main')
+                section#camera-feeds.col-md-4.feed-column(rel='cameras')
+
+        ul.fingers
+            li.circle.open-hand
+                img(src='old_dist/img/open-hand.png', width='100')
+            li.hand.hidden
+                img(src='old_dist/img/hand_grab.png', width='100', height='100')
+
+        script(type='text/javascript', src='dist/assets/js/vendor/require.js')
+        script(type='text/javascript', src='dist/assets/js/app.js')

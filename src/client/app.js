@@ -9,7 +9,7 @@ require(['LayoutManager', 'SockJS'], function (LayoutManager, SockJS) {
     var socketConnect = function () {
         console.log('Attempting connection');
 
-        var socket = new SockJS('http://localhost:9000/');
+        var socket = new SockJS('http://localhost:9000/ws/', null, {transports: 'websocket'});
 
         socket.onopen = function () {
             console.log('Connection established');
