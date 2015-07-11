@@ -21,3 +21,8 @@ Just run `npm install`. This will install any dependencies and compile files for
 - server integrated clients for photo and video streaming
 - BDD
 - notifications
+
+### Usage
+To run the client you currently need a working web server such as Apache or NGINX.
+
+The server runs on a separate Node.JS HTTP server on port 9000. Simply run `node index.js`.
