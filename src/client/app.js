@@ -1,7 +1,8 @@
 require.config({
     baseUrl: 'dist/assets/js',
     paths: {
-        'SockJS': '//cdn.jsdelivr.net/sockjs/1.0.0/sockjs.min'
+        'SockJS': '//cdn.jsdelivr.net/sockjs/1.0.0/sockjs.min',
+        'React': '//fb.me/react-with-addons-0.13.3.js'
     }
 });
 

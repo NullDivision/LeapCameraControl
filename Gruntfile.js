@@ -37,10 +37,6 @@ module.exports = function (grunt) {
             styles: {
                 files: ['src/**/*.scss'],
                 tasks: ['sass']
-            },
-            views: {
-                files: ['index.jade'],
-                tasks: ['jade']
             }
         },
         jasmine: {
@@ -54,13 +50,6 @@ module.exports = function (grunt) {
                             baseUrl: 'dist/assets/js'
                         }
                     }
-                }
-            }
-        },
-        jade: {
-            compile: {
-                files: {
-                    'index.html': 'index.jade'
                 }
             }
         },
@@ -99,7 +88,6 @@ module.exports = function (grunt) {
         }
     });
 
-    grunt.loadNpmTasks('grunt-contrib-jade');
     grunt.loadNpmTasks('grunt-contrib-jasmine');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-sass');
@@ -109,5 +97,5 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-lodash');
     grunt.loadNpmTasks('grunt-notify');
 
-    grunt.registerTask('default', ['jade', 'sass', 'lodash', 'uglify']);
+    grunt.registerTask('default', ['sass', 'lodash', 'uglify']);
 };
