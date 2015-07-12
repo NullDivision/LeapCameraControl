@@ -14,6 +14,9 @@ require(['LayoutManager', 'SockJS'], function (LayoutManager, SockJS) {
         socket.onopen = function () {
             console.log('Connection established');
         };
+        socket.onmessage = function (message) {
+            console.log(message);
+        }
     };
 
     socketConnect();
