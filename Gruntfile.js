@@ -47,7 +47,10 @@ module.exports = function (grunt) {
                     template: require('grunt-template-jasmine-requirejs'),
                     templateOptions: {
                         requireConfig: {
-                            baseUrl: 'dist/assets/js'
+                            baseUrl: 'dist/assets/js',
+                            paths: {
+                                'React': 'https://fbcdn-dragon-a.akamaihd.net/hphotos-ak-xap1/t39.3284-6/11057094_1387833628212425_492117912_n'
+                            }
                         }
                     }
                 }

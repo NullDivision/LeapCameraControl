@@ -1,4 +1,4 @@
-define('LayoutManager', ['vendor/lodash'], function (_) {
+define(['vendor/lodash', 'React'], function (_, React) {
     var config = {};
     var acceptedTypes = ['image/jpeg'];
 
@@ -10,7 +10,7 @@ define('LayoutManager', ['vendor/lodash'], function (_) {
     };
 
     function generateImageFeed (feed) {
-
+        React.render(React.createElement('div', null, 'test'), document.getElementById('camera-feeds'));
     }
 
     function generateFeed (feed) {
