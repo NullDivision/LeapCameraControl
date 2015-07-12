@@ -93,7 +93,7 @@ module.exports = function (grunt) {
                 options: {
                     modifier: 'modern',
                     exports: ['amd'],
-                    include: ['isEmpty']
+                    include: ['isEmpty', 'has', 'includes']
                 }
             }
         }
