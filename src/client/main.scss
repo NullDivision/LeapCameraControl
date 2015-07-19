@@ -30,6 +30,23 @@
     }
 }
 
+.feed-instance {
+    background-color: #646464;
+    border: 1px solid #352C2C;
+    box-shadow: 0 0 5px #000;
+    width: 190px;
+    height: 100px;
+    display: inline-block;
+
+    img {
+        max-width: 100%;
+        max-height: 100%;
+        margin: 0 auto;
+        position: relative;
+        display: block;
+    }
+}
+
 #page {
     height: 100%;
     width: 100%;
@@ -47,4 +64,5 @@
 
 #camera-feeds {
     @include box-shadow(#000 -3px 0 8px);
+    padding-top: 20px;
 }

@@ -1,5 +1,8 @@
 define(['vendor/lodash', 'React'], function (_, React) {
-    var config = {};
+    var config = {
+        feedClass: 'feed-instance',
+        container: { id: 'camera-feeds' }
+    };
     var acceptedTypes = ['image/jpeg'];
 
     function validateFeed (feed) {
@@ -10,14 +13,21 @@ define(['vendor/lodash', 'React'], function (_, React) {
     };
 
     function generateImageFeed (feed) {
-        React.render(React.createElement('div', null, 'test'), document.getElementById('camera-feeds'));
+        React.render(
+            React.createElement(
+                'div',
+                { className: config.feedClass },
+                React.createElement('image', { source: { uri: feed.url } })
+            ),
+            document.getElementById(config.container.id)
+        );
     }
 
     function generateFeed (feed) {
         validateFeed(feed);
 
         switch (feed.type) {
-            case 'text/plain':
+            case 'image/jpeg':
                 generateImageFeed(feed);
             break;
         }
@@ -25,16 +35,14 @@ define(['vendor/lodash', 'React'], function (_, React) {
 
     return {
         get: function (attr) {
-            return config.attr;
+            return config[attr];
         },
         addFeed: function (feed) {
             if (_.isEmpty(feed)) {
                 throw new Error('Dataset required');
             }
 
-            generateFeed(feed);
-
-            return false;
+            return generateFeed(feed);
         }
     };
 });

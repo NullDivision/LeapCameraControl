@@ -29,11 +29,11 @@ app.get('/registry', function (request, response) {
 app.get('/add-image', function (request, response) {
     response.render('add_image');
 });
-app.post('/add-image', bodyParser.json(), function (request, response) {
+app.post('/add-image', bodyParser.json(), bodyParser.urlencoded({ extended: true }), function (request, response) {
     // emit new image to clients
     console.log('New feed added');
     for (var i = connections.length - 1; i >= 0; i--) {
-        connections[i].write(JSON.stringify({action: 'push', content: {type: 'text/plain', data: request.body.url}}));
+        connections[i].write(JSON.stringify({action: 'push', content: {type: 'image/jpeg', src: request.body.url}}));
     };
 
     response.render('add_image');

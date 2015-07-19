@@ -2,7 +2,7 @@ require.config({
     baseUrl: 'dist/assets/js',
     paths: {
         'SockJS': '//cdn.jsdelivr.net/sockjs/1.0.0/sockjs.min',
-        'React': '//fb.me/react-with-addons-0.13.3.js'
+        'React': '//fb.me/react-with-addons-0.13.3'
     }
 });
 
@@ -17,6 +17,10 @@ require(['LayoutManager', 'SockJS'], function (LayoutManager, SockJS) {
         };
         socket.onmessage = function (message) {
             console.log(message);
+            var messageData = JSON.parse(message.data);
+            if ('push' === messageData.action) {
+                LayoutManager.addFeed(messageData.content);
+            }
         }
     };
 
