@@ -12,7 +12,7 @@ module.exports = function (grunt) {
             builder: {
                 src: ['Gruntfile.js'],
                 directives: {
-                    predef: ['module', 'require']
+                    predef: ['module', 'require', 'console']
                 }
             },
             all: {
@@ -27,16 +27,32 @@ module.exports = function (grunt) {
         },
         watch: {
             tests: {
-                files: ['src/client/**/*.js', 'spec/**/*.js'],
+                files: ['spec/**/*.js'],
                 tasks: ['jshint', 'jslint', 'jasmine']
             },
             scripts: {
                 files: ['src/client/**/*.js', 'assets/**/*.js', 'index.js'],
-                tasks: ['jshint', 'jslint', 'uglify']
+                tasks: ['jshint', 'jslint', 'uglify:scripts', 'jasmine']
+            },
+            legacy: {
+                files: ['assets/**/*.js'],
+                tasks: ['jshint', 'jslint', 'jasmine']
+            },
+            entry: {
+                files: ['index.js'],
+                tasks: ['jshint', 'jslint']
             },
             styles: {
                 files: ['src/**/*.scss'],
                 tasks: ['sass']
+            },
+            jsx: {
+                files: ['src/client/ComponentProvider.jsx'],
+                tasks: ['react']
+            },
+            jsxDist: {
+                files: ['dist/assets/js/ComponentProvider.js'],
+                tasks: ['jshint', 'jslint', 'uglify:jsx', 'jasmine']
             }
         },
         jasmine: {
@@ -49,7 +65,8 @@ module.exports = function (grunt) {
                         requireConfig: {
                             baseUrl: 'dist/assets/js',
                             paths: {
-                                'React': 'https://fbcdn-dragon-a.akamaihd.net/hphotos-ak-xap1/t39.3284-6/11057094_1387833628212425_492117912_n'
+                                React: 'https://fbcdn-dragon-a.akamaihd.net/hphotos-ak-xap1/t39.3284-6/' +
+                                       '11057094_1387833628212425_492117912_n'
                             }
                         }
                     }
@@ -70,14 +87,10 @@ module.exports = function (grunt) {
             }
         },
         uglify: {
-            vendors: {
-                files: {
-                    'dist/assets/js/vendor/require.js': 'node_modules/requirejs/require.js'
-                }
-            },
-            scripts: {
-                files: grunt.file.expandMapping('src/client/**/*.js', 'dist/assets/js/', {flatten: true})
-            }
+            options: {sourceMap: true, sourceMapIncludeSources: true},
+            vendors: {files: {'dist/assets/js/vendor/require.js': 'node_modules/requirejs/require.js'}},
+            scripts: {files: grunt.file.expandMapping('src/client/**/*.js', 'dist/assets/js/', {flatten: true})},
+            jsx:     {files: {'dist/assets/js/ComponentProvider.js': 'dist/assets/js/ComponentProvider.js'}}
         },
         lodash: {
             build: {
@@ -85,9 +98,12 @@ module.exports = function (grunt) {
                 options: {
                     modifier: 'modern',
                     exports: ['amd'],
-                    include: ['isEmpty', 'has', 'includes']
+                    include: ['isEmpty', 'has', 'includes', 'assign', 'forEach', 'map']
                 }
             }
+        },
+        react: {
+            build: { files: { 'dist/assets/js/ComponentProvider.js': 'src/client/ComponentProvider.jsx' } }
         }
     });
 
@@ -99,6 +115,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-jslint');
     grunt.loadNpmTasks('grunt-lodash');
     grunt.loadNpmTasks('grunt-notify');
+    grunt.loadNpmTasks('grunt-react');
 
-    grunt.registerTask('default', ['sass', 'lodash', 'uglify']);
+    grunt.registerTask('default', ['sass', 'react', 'lodash', 'uglify']);
 };

@@ -7,6 +7,7 @@ var app = express();
 app.set('view engine', 'jade');
 app.use('/dist', express.static('dist'));
 app.use('/old_dist', express.static('assets'));
+app.use('/node_modules', express.static('node_modules'));
 
 // start services
 var server = require('http').createServer(app);

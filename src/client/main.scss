@@ -13,6 +13,7 @@
 @import 'bootstrap/utilities';
 
 @import 'compass/css3/box-shadow';
+@import 'compass/css3/transform';
 
 .row {
     section {
@@ -37,6 +38,7 @@
     width: 190px;
     height: 100px;
     display: inline-block;
+    margin: 10px;
 
     img {
         max-width: 100%;

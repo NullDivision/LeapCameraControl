@@ -27,28 +27,36 @@ define(['LayoutManager'], function (LayoutManager) {
                 expect(LayoutManager.addFeed).toThrow(new Error('Dataset required'));
             });
 
-            it('should fail on invalid feed information', function () {
+            it('should fail if feed is not an array', function () {
                 expect(
                     function () {LayoutManager.addFeed({type: 'text/plain'});}
+                ).toThrow(new Error('Feeds must be of type [Array]'));
+            });
+
+            it('should fail if invalid feed type', function () {
+                expect(
+                    function () {LayoutManager.addFeed([{type: 'text/plain'}]);}
                 ).toThrow(new Error('Invalid feed parameter: type'));
             });
 
             it('should generate a new feed in layout', function () {
-                // create temporary container
-                var feedEntity,
-                    parentContainer = document.createElement('div');
+                var feedEntity, parentContainer;
 
+                // create temporary container
+                parentContainer = document.createElement('div')
                 parentContainer.id = LayoutManager.get('container').id;
                 document.body.appendChild(parentContainer);
 
-                LayoutManager.addFeed({
-                    type: 'image/jpeg',
-                    url: '//lh4.googleusercontent.com/-jeaZZDVKcI0/AAAAAAAAAAI/AAAAAAAAAAA/LRfaZ1X_izQ/s32-c/photo.jpg'
-                });
+                LayoutManager.addFeed([
+                    {type: 'image/jpeg', url: '//localhost/photo_1.jpg'},
+                    {type: 'image/jpeg', url: '//localhost/photo_2.jpg'},
+                    {type: 'image/jpeg', url: '//localhost/photo_3.jpg'},
+                    {type: 'image/jpeg', url: '//localhost/photo_4.jpg'}
+                ]);
 
-                feedEntity = parentContainer.querySelector('.' + LayoutManager.get('feedClass'));
-                expect(feedEntity.length).not.toBe(null);
-                expect(feedEntity.querySelector('img').length).not.toBe(null);
+                expect(
+                    parentContainer.querySelectorAll('.' + LayoutManager.get('feedClass') + ' img').length
+                ).toBe(4);
             });
         });
     });

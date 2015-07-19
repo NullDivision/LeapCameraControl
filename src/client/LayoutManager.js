@@ -1,48 +1,39 @@
-define(['vendor/lodash', 'React'], function (_, React) {
+define(['vendor/lodash', 'ComponentProvider', 'React'], function (_, ComponentProvider, React) {
     var config = {
         feedClass: 'feed-instance',
         container: { id: 'camera-feeds' }
     };
     var acceptedTypes = ['image/jpeg'];
 
-    function validateFeed (feed) {
-        // test type
-        if (!_.has(feed, 'type') || !_.includes(acceptedTypes, feed.type)) {
-            throw new Error('Invalid feed parameter: type');
+    function validateFeed (feeds) {
+        if (!_.isArray(feeds)) {
+            throw new Error('Feeds must be of type [Array]');
         }
+
+        _.forEach(feeds, function (feed) {
+            // test type
+            if (!_.has(feed, 'type') || !_.includes(acceptedTypes, feed.type)) {
+                throw new Error('Invalid feed parameter: type');
+            }
+        });
     };
 
-    function generateImageFeed (feed) {
-        React.render(
-            React.createElement(
-                'div',
-                { className: config.feedClass },
-                React.createElement('image', { source: { uri: feed.url } })
-            ),
-            document.getElementById(config.container.id)
-        );
-    }
+    function generateFeed (feeds) {
+        validateFeed(feeds);
 
-    function generateFeed (feed) {
-        validateFeed(feed);
-
-        switch (feed.type) {
-            case 'image/jpeg':
-                generateImageFeed(feed);
-            break;
-        }
+        ComponentProvider.generateFeeds({feeds: feeds, container: config.container, feedClass: config.feedClass});
     };
 
     return {
         get: function (attr) {
             return config[attr];
         },
-        addFeed: function (feed) {
-            if (_.isEmpty(feed)) {
+        addFeed: function (feeds) {
+            if (_.isEmpty(feeds)) {
                 throw new Error('Dataset required');
             }
 
-            return generateFeed(feed);
+            return generateFeed(feeds);
         }
     };
 });

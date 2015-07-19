@@ -8,6 +8,8 @@ require.config({
 
 require(['LayoutManager', 'SockJS'], function (LayoutManager, SockJS) {
     var socketConnect = function () {
+        var feeds = [];
+
         console.log('Attempting connection');
 
         var socket = new SockJS('http://localhost:9000/ws/', null, {transports: 'websocket'});
@@ -16,10 +18,10 @@ require(['LayoutManager', 'SockJS'], function (LayoutManager, SockJS) {
             console.log('Connection established');
         };
         socket.onmessage = function (message) {
-            console.log(message);
             var messageData = JSON.parse(message.data);
             if ('push' === messageData.action) {
-                LayoutManager.addFeed(messageData.content);
+                feeds.push(messageData.content);
+                LayoutManager.addFeed(feeds);
             }
         }
     };
