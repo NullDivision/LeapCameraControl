@@ -3,5 +3,6 @@
 .sass-cache/
 _SpecRunner.html
 index.html
+leap.sublime-*
 dist/
 node_modules/
